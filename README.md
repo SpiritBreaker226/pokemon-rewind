@@ -2,6 +2,25 @@
 
 Rewind is looking for intelligent, resourceful, full-stack developers to join their growing team. To help them evaluate new talent, they have created this take-home interview question. This question should take you no more than a few hours.
 
+## Notes
+
+- Sets will *not* be in its a database table since as to the requirements, uses one Set. Also, to keep the application complexity down.
+Suppose we need to add more Sets to the database. Then we will need to add a Sets table and a link table to connect the Cards table to its Sets table so that a card with the same artwork can be in multiple Sets.
+  - Use is following in a the link table when you are:
+    - set_id - id from the set table
+    - card_id - id from the card table
+    - number
+    - rarity
+- Types are going to be in their table because multiple parts of a card required types. The cards' details are Types, Retreat Cost, Types in Resistances and Types in Weaknesses, Cost in Attacks.
+  - Types will be hardcoded in the seeds to keep the complexity down, and since Types do not change that often.
+- Sub Type, Super Types, Rarity will not be added to the database as tables to help speed the development. If there is time, then those may be split up later on, into their tables.
+  - When adding those to a table for Rarity, since it does not have an endpoint, those will need to check first with the database or memory to keep not having to always connect with a database. Then if Rarity is not in the table, add in an entry into its table.
+- For Card Types, Sub or Super Types, they need to access the endpoint when doing a back-up. Get the current Card Types, Sub and Super Types from the database and compare it with those from the endpoint; any new Card Types, Sub or Super Types add them to their respected tables.
+- Card Text is in a table with the Card table because a card can have multiple texts or the JSON response has the Text in an array.
+- Ability and Ancient Trait have elements Name and Text in an object, which will be in a polymorphic association table.
+- Weaknesses and Resistances have elements Types and Value in an object, which will be in a polymorphic association table.
+- Since Retreat Cost uses many types of qualities, it can be in the same link table as Types.
+
 ## Installation and running this solution
 
 ### Installation
@@ -24,6 +43,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 4. Go to `cd server` directory
 5. Run `bundle`
 6. Run `rails db:migrate`
+7. Run `rake db:seed`
 
 ##### Usage
 
