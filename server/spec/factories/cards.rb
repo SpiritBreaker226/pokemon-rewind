@@ -20,6 +20,12 @@ FactoryBot.define do
     set { ["BREAKthrough", "Phantom Forces", "Jungle"].sample }
     set_code { "#{series.downcase}#{Faker::Number.within(range: 1..10)}" }
 
+    trait :with_an_ability do
+      ability_text { Faker::Movies::HarryPotter.quote }
+      ability_name { Faker::Movies::HarryPotter.spell }
+      ability_type { ["Pokémon Power", 'Bad Dreams', 'Forecast'].sample }
+    end
+
     factory :card_with_texts do
       transient do
         text_count { 2 }

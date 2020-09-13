@@ -13,4 +13,13 @@ class Card < ApplicationRecord
     :set_code,
     presence: true
   )
+
+  with_options unless: :with_an_ability? do |card|
+    card.validates :ability_name, presence: true
+    card.validates :ability_text, presence: true
+  end
+
+  def with_an_ability?
+    ability_name.blank? && ability_text.blank?
+  end
 end

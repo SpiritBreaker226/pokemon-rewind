@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_012346) do
+ActiveRecord::Schema.define(version: 2020_09_13_024726) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2020_09_13_012346) do
     t.string "set_code", limit: 12, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ability_name", limit: 50
+    t.string "ability_text"
+    t.string "ability_type", limit: 50
   end
 
   create_table "texts", force: :cascade do |t|
