@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_163223) do
+ActiveRecord::Schema.define(version: 2020_09_13_172150) do
 
   create_table "attacks", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 2020_09_13_163223) do
     t.integer "converted_energy_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attacks_cards", id: false, force: :cascade do |t|
+    t.integer "attack_id"
+    t.integer "card_id"
+    t.index ["attack_id"], name: "index_attacks_cards_on_attack_id"
+    t.index ["card_id"], name: "index_attacks_cards_on_card_id"
+  end
+
+  create_table "attacks_types", force: :cascade do |t|
+    t.integer "attack_id"
+    t.integer "type_id"
+    t.index ["attack_id"], name: "index_attacks_types_on_attack_id"
+    t.index ["type_id"], name: "index_attacks_types_on_type_id"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -58,5 +72,9 @@ ActiveRecord::Schema.define(version: 2020_09_13_163223) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "attacks_cards", "attacks"
+  add_foreign_key "attacks_cards", "cards"
+  add_foreign_key "attacks_types", "attacks"
+  add_foreign_key "attacks_types", "types"
   add_foreign_key "texts", "cards"
 end

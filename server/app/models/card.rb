@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  has_and_belongs_to_many :attacks
   has_many :texts, dependent: :delete_all
 
   validates(
