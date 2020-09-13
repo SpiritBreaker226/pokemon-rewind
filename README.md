@@ -17,7 +17,7 @@ Suppose we need to add more Sets to the database. Then we will need to add a Set
   - When adding those to a table for Rarity, since it does not have an endpoint, those will need to check first with the database or memory to keep not having to always connect with a database. Then if Rarity is not in the table, add in an entry into its table.
 - For Card Types, Sub or Super Types, they need to access the endpoint when doing a back-up. Get the current Card Types, Sub and Super Types from the database and compare it with those from the endpoint; any new Card Types, Sub or Super Types add them to their respected tables.
 - Card Text is in a table with the Card table because a card can have multiple texts or the JSON response has the Text in an array.
-- Ability and Ancient Trait have elements Name and Text in an object, which will be in a polymorphic association table.
+- Add the Ability fields to the Card model and table because the Ability of a card is optional. Ability is one per card if the card has one and keeps the number of helper tables that need to use with a card to a minimum, which makes maintaining such a system too much.
 - Weaknesses and Resistances have elements Types and Value in an object, which will be in a polymorphic association table.
 - Since Retreat Cost uses many types of qualities, it can be in the same link table as Types.
 
