@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_024726) do
+ActiveRecord::Schema.define(version: 2020_09_13_163223) do
+
+  create_table "attacks", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+    t.string "text", null: false
+    t.string "damage", limit: 4
+    t.integer "converted_energy_cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string "name", limit: 50, null: false
