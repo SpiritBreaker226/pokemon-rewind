@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_172150) do
+ActiveRecord::Schema.define(version: 2020_09_15_232938) do
 
   create_table "attacks", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_09_13_172150) do
     t.string "ability_type", limit: 50
   end
 
+  create_table "cards_types", id: false, force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "type_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_cards_types_on_card_id"
+    t.index ["type_id"], name: "index_cards_types_on_type_id"
+  end
+
   create_table "texts", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -76,5 +85,7 @@ ActiveRecord::Schema.define(version: 2020_09_13_172150) do
   add_foreign_key "attacks_cards", "cards"
   add_foreign_key "attacks_types", "attacks"
   add_foreign_key "attacks_types", "types"
+  add_foreign_key "cards_types", "cards"
+  add_foreign_key "cards_types", "types"
   add_foreign_key "texts", "cards"
 end
