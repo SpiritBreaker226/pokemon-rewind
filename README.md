@@ -23,6 +23,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Since Retreat Cost, Weaknesses and Resistances uses the same fields, they merge into one table called Card Groups. So to access the different parts of Card Groups, you will need to throw the card directly. That way, it reads better as you know what that cards Weaknesses, resistances and retreat cost.
 - After looking at the HP coming from the Pokemon API for the Card Set for this project, Base 4, its decided, HP will be an integer, which is easier to search throw than a string.
 - To keep the application simple, HP will be 'greater than or equal to' to show as many Pokemon as possible.
+- Add Pokemon TCG SDK gem to take care of the communication between the application and Pokemon TCG and reduce the amount of code in the application, focusing on the application itself.
 
 ### Database Schema
 
