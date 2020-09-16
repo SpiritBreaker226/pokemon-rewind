@@ -20,6 +20,14 @@ Suppose we need to add more Sets to the database. Then we will need to add a Set
 - Add the Ability fields to the Card model and table because the Ability of a card is optional. Ability is one per card if the card has one and keeps the number of helper tables that need to use with a card to a minimum, which makes maintaining such a system too much.
 - Since Retreat Cost, Weaknesses and Resistances uses the same fields, they merge into one table called Card Groups. So to access the different parts of Card Groups, you will need to throw the card directly. That way, it reads better as you know what that cards Weaknesses, resistances and retreat cost.
 
+### Database Schema
+
+For the schema, the card table is split into the helper tables and is normalized for the most part. When we add data from the Pokemon API, we can organize it and show only the user's relive data when they land on the page or search. Thus we can simplify the table view and show only these primary fields for a card and not overload the table on page load or searching.
+
+Besides, this will reduce the amount of data coming from the server, giving a better performance. If the user wants more details, then they can click on that card and get more information.
+
+- [Link to the Database diagram for the application.](https://photos.app.goo.gl/7SyxD7cw4uwXdkWm9)
+
 ## Installation and running this solution
 
 ### Installation
