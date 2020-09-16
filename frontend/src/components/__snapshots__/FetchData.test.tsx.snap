@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchData fetch card data on error from the server should render an error message 1`] = `
+<h6
+  class="MuiTypography-root MuiTypography-h6 MuiTypography-colorError"
+>
+  fake error message
+</h6>
+`;
+
+exports[`FetchData fetch card data renders loading screen 1`] = `
+<h6
+  class="MuiTypography-root MuiTypography-h6"
+>
+  Loading...
+</h6>
+`;

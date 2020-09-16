@@ -1,0 +1,564 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App fetch card data renders cards component 1`] = `
+<main>
+  <header
+    class="makeStyles-header-3"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+      >
+        <h1
+          class="MuiTypography-root MuiTypography-h1"
+        >
+          Pokemon Rewind
+        </h1>
+      </div>
+      <div
+        class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
+      >
+        <section>
+          <div
+            class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                data-testid="searchBox"
+                id="searchBox"
+                name="searchBox"
+                placeholder="Search by"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Search
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </section>
+      </div>
+      <div
+        class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
+      >
+        <section
+          class="makeStyles-control-5"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+            data-testid="control_backup_create"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Create Backup
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+            data-testid="control_backup_purge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Purge Backup
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </section>
+      </div>
+    </div>
+  </header>
+  <div
+    class="makeStyles-appBody-1"
+  >
+    <section>
+      <div
+        class="MuiTableContainer-root"
+      >
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Name
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                National Pokedex Number
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Subtype
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Supertype
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                HP
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Artist
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Converted Retreat Cost
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Evolves From
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Number
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rarity
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Series
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Set
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Set Code
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Lightning Energy0"
+              >
+                Lightning Energy
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Energy1"
+              >
+                Energy
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Basic2"
+              >
+                Basic
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base41281283"
+              >
+                128
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Keiji Kinebuchi4"
+              >
+                Keiji Kinebuchi
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Common5"
+              >
+                Common
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Base6"
+              >
+                Base
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128Base Set 27"
+              >
+                Base Set 2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base4128base48"
+              >
+                base4
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Jigglypuff0"
+              >
+                Jigglypuff
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477391"
+              >
+                39
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Pokémon2"
+              >
+                Pokémon
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Basic3"
+              >
+                Basic
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477604"
+              >
+                60
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base47715"
+              >
+                1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477776"
+              >
+                77
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Kagemaru Himeno7"
+              >
+                Kagemaru Himeno
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Common8"
+              >
+                Common
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Base9"
+              >
+                Base
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477Base Set 210"
+              >
+                Base Set 2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base477base411"
+              >
+                base4
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Squirtle0"
+              >
+                Squirtle
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base49371"
+              >
+                7
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Pokémon2"
+              >
+                Pokémon
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Basic3"
+              >
+                Basic
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493404"
+              >
+                40
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base49315"
+              >
+                1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493936"
+              >
+                93
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Mitsuhiro Arita7"
+              >
+                Mitsuhiro Arita
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Common8"
+              >
+                Common
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Base9"
+              >
+                Base
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493Base Set 210"
+              >
+                Base Set 2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="base493base411"
+              >
+                base4
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <nav
+        aria-label="pagination navigation"
+        class="MuiPagination-root makeStyles-pagination-8"
+        data-testid="pagination"
+      >
+        <ul
+          class="MuiPagination-ul"
+        >
+          <li>
+            <button
+              aria-label="Go to previous page"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiPaginationItem-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-current="true"
+              aria-label="page 1"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-selected"
+              tabindex="0"
+              type="button"
+            >
+              1
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 2"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              2
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 3"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              3
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 4"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              4
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 5"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              5
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <div
+              class="MuiPaginationItem-root MuiPaginationItem-ellipsis"
+            >
+              …
+            </div>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 20"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              20
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to next page"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiPaginationItem-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </div>
+</main>
+`;

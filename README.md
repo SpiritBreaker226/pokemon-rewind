@@ -4,8 +4,10 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 
 ## Notes
 
-- Sets will *not* be in its a database table since as to the requirements, uses one Set. Also, to keep the application complexity down.
-Suppose we need to add more Sets to the database. Then we will need to add a Sets table and a link table to connect the Cards table to its Sets table so that a card with the same artwork can be in multiple Sets.
+### Server
+
+- Sets will _not_ be in its a database table since as to the requirements, uses one Set. Also, to keep the application complexity down.
+- Suppose we need to add more Sets to the database. Then we will need to add a Sets table and a link table to connect the Cards table to its Sets table so that a card with the same artwork can be in multiple Sets.
   - Use is following in a the link table when you are:
     - set_id - id from the set table
     - card_id - id from the card table
@@ -27,6 +29,15 @@ For the schema, the card table is split into the helper tables and is normalized
 Besides, this will reduce the amount of data coming from the server, giving a better performance. If the user wants more details, then they can click on that card and get more information.
 
 - [Link to the Database diagram for the application.](https://photos.app.goo.gl/7SyxD7cw4uwXdkWm9)
+
+### Frontend
+
+- Due to time constraints, the following will have to happen:
+  - The Frontend came from another project, which I did, as most of the requirements already done and will have to modify to fit into these project requirements.
+  - Here is the [Link](https://github.com/SpiritBreaker226/nfl-rushing/tree/master/frontend), to that project
+  - Purge Backup will _not_ have a confirm dialogue, if there is time, then maybe this will be added.
+  - Display miminuim amount of informaiton of the card, so there will not be a detail view of each card nor displaying of images.
+  - Display the minimum amount of information on the card, so there will not be a detailed view of each card nor displaying of images.
 
 ## Installation and running this solution
 
@@ -62,3 +73,27 @@ From the 'server' directory
 - To run the server use the command `rails s`
 - To run the test with code coverage use the commend `rspec`
   - To open code coverage in the 'server' directory type `open coverage/index.html`
+
+#### Frontend
+
+##### Pre Requirements
+
+- Have `yarn` installed
+
+##### To Install
+
+1. In the terminal make sure you are in the project's root directory
+2. Go to `cd frontend` directory
+3. Run `yarn`
+4. Run `cp .env.example .env`
+
+##### Usage
+
+Frontend is running on `http://localhost:8080`, you can vist the app once `yarn start` is turn on.
+
+From the 'frontend' directory
+
+- To run the frontend use the commend `yarn start`
+- To run the test with code coverage use the commend `yarn test`
+  - To open code coverage in the 'frontend' directory type `open coverage/lcov-report/index.html`
+- To run the test in watch mode use the commend `yarn test:watch`
