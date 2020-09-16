@@ -3,6 +3,25 @@ class Card < ApplicationRecord
   has_and_belongs_to_many :types
   has_many :texts, dependent: :delete_all
 
+  has_many(
+    :resistances,
+    -> { where group_type: 'resistances' },
+    class_name: "CardGroup",
+    dependent: :delete_all
+  )
+  has_many(
+    :weaknesses,
+    -> { where group_type: 'weaknesses' },
+    class_name: "CardGroup",
+    dependent: :delete_all
+  )
+  has_many(
+    :retreat_costs,
+    -> { where group_type: 'retreat_costs' },
+    class_name: "CardGroup",
+    dependent: :delete_all
+  )
+
   validates(
     :name,
     :image_url,
