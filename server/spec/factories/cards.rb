@@ -10,7 +10,7 @@ FactoryBot.define do
     image_url_hi_res { Faker::Avatar.image(size: "50x50")  }
     subtype { ["MEGA", "Stage 1", "BREAK", "Supporter"].sample }
     supertype { ["Pokémon", "Trainer", "Energy"].sample }
-    hp { Faker::Number.within(range: 1..99).to_s }
+    hp { Faker::Number.within(range: 1..99) }
     artist { Faker::Artist.name }
     converted_retreat_cost { Faker::Number.within(range: 1..10) }
     evolves_from { Faker::Games::Pokemon.name }

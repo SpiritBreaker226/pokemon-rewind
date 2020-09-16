@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_235902) do
+ActiveRecord::Schema.define(version: 2020_09_16_130857) do
 
   create_table "attacks", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_235902) do
     t.string "image_url_hi_res", limit: 2048, null: false
     t.string "subtype", limit: 50
     t.string "supertype", limit: 50
-    t.string "hp", limit: 4
+    t.integer "hp", limit: 4
     t.string "artist", limit: 50, null: false
     t.integer "converted_retreat_cost"
     t.string "evolves_from", limit: 50

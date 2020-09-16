@@ -21,6 +21,8 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Card Text is in a table with the Card table because a card can have multiple texts or the JSON response has the Text in an array.
 - Add the Ability fields to the Card model and table because the Ability of a card is optional. Ability is one per card if the card has one and keeps the number of helper tables that need to use with a card to a minimum, which makes maintaining such a system too much.
 - Since Retreat Cost, Weaknesses and Resistances uses the same fields, they merge into one table called Card Groups. So to access the different parts of Card Groups, you will need to throw the card directly. That way, it reads better as you know what that cards Weaknesses, resistances and retreat cost.
+- After looking at the HP coming from the Pokemon API for the Card Set for this project, Base 4, its decided, HP will be an integer, which is easier to search throw than a string.
+- To keep the application simple, HP will be 'greater than or equal to' to show as many Pokemon as possible.
 
 ### Database Schema
 

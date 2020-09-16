@@ -15,7 +15,7 @@ export interface Stats {
   set: string
   set_code: string
   national_pokedex_number?: number
-  hp?: string
+  hp?: number
   converted_retreat_cost?: number
   evolves_from?: string
 }
