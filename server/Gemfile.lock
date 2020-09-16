@@ -80,6 +80,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    jsonapi-serializer (2.1.0)
+      activesupport (>= 4.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -198,6 +200,7 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   faker
+  jsonapi-serializer
   listen (~> 3.2)
   pry
   pry-byebug
