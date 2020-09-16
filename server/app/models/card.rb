@@ -45,11 +45,22 @@ class Card < ApplicationRecord
     ability_name.blank? && ability_text.blank?
   end
 
-  def self.search(value: nil)
-    if value.nil?
-      Card.all.order(name: :asc)
-    else
-      Card.where("LOWER(name) LIKE ?", "%#{value.downcase}%").order(name: :asc)
+  def self.search(field_name: nil, value: nil)
+    cards = case field_name
+      when 'name'
+        Card.where("LOWER(name) LIKE ?", "%#{value.downcase}%")
+      when 'rarity'
+        Card.where("LOWER(rarity) = ?", value.downcase)
+      when 'hp'
+        Card.where("hp >= ?", value)
+      else
+        if value.nil?
+          Card.all
+        else
+          return nil
+        end
     end
+
+    cards.order(name: :asc)
   end
 end
