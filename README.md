@@ -18,8 +18,7 @@ Suppose we need to add more Sets to the database. Then we will need to add a Set
 - For Card Types, Sub or Super Types, they need to access the endpoint when doing a back-up. Get the current Card Types, Sub and Super Types from the database and compare it with those from the endpoint; any new Card Types, Sub or Super Types add them to their respected tables.
 - Card Text is in a table with the Card table because a card can have multiple texts or the JSON response has the Text in an array.
 - Add the Ability fields to the Card model and table because the Ability of a card is optional. Ability is one per card if the card has one and keeps the number of helper tables that need to use with a card to a minimum, which makes maintaining such a system too much.
-- Weaknesses and Resistances have elements Types and Value in an object, which will be in a polymorphic association table.
-- Since Retreat Cost uses many types of qualities, it can be in the same link table as Types.
+- Since Retreat Cost, Weaknesses and Resistances uses the same fields, they merge into one table called Card Groups. So to access the different parts of Card Groups, you will need to throw the card directly. That way, it reads better as you know what that cards Weaknesses, resistances and retreat cost.
 
 ## Installation and running this solution
 
