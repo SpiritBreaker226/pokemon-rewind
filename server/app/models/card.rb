@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   has_and_belongs_to_many :attacks
   has_and_belongs_to_many :types
+
   has_many :texts, dependent: :delete_all
 
   has_many(
@@ -42,5 +43,13 @@ class Card < ApplicationRecord
 
   def with_an_ability?
     ability_name.blank? && ability_text.blank?
+  end
+
+  def self.search(value: nil)
+    if value.nil?
+      Card.all.order(name: :asc)
+    else
+      Card.where("LOWER(name) LIKE ?", "%#{value.downcase}%").order(name: :asc)
+    end
   end
 end
