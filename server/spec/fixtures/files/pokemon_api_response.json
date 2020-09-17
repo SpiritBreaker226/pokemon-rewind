@@ -1,0 +1,237 @@
+{
+  "cards": [
+    {
+      "id": "base4-112",
+      "name": "Maintenance",
+      "imageUrl": "https://images.pokemontcg.io/base4/112.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/112_hires.png",
+      "supertype": "Trainer",
+      "subtype": "",
+      "number": "112",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Uncommon",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "text": [
+        "Shuffle 2 of the other cards from your hand into your deck in order to draw a card."
+      ]
+    },
+    {
+      "id": "base4-113",
+      "name": "PlusPower",
+      "imageUrl": "https://images.pokemontcg.io/base4/113.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/113_hires.png",
+      "supertype": "Trainer",
+      "subtype": "",
+      "number": "113",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Uncommon",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "text": [
+        "Attach PlusPower to your Active Pokémonn. At the end of your turn, discard PlusPower. If this Pokémon's attack does damage to the defending Pokémon (after applying Weakness and Resistance), the attack does 10 more damage to the Defending Pokémon."
+      ]
+    },
+    {
+      "id": "base4-121",
+      "name": "Poké Ball",
+      "imageUrl": "https://images.pokemontcg.io/base4/121.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/121_hires.png",
+      "supertype": "Trainer",
+      "subtype": "",
+      "number": "121",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "text": [
+        "Flip a coin. If heads, you may search your deck for any Basic Pokémon or Evolution card. Show that card to your opponent, then put it into your hand. Shuffle your deck afterward."
+      ]
+    },
+    {
+      "id": "base4-120",
+      "name": "Gust of Wind",
+      "imageUrl": "https://images.pokemontcg.io/base4/120.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/120_hires.png",
+      "supertype": "Trainer",
+      "subtype": "",
+      "number": "120",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "text": [
+        "Choose 1 of your opponent's Benched Pokémon and switch it with his or her Active Pokémon."
+      ]
+    },
+    {
+      "id": "base4-129",
+      "name": "Psychic Energy",
+      "imageUrl": "https://images.pokemontcg.io/base4/129.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/129_hires.png",
+      "supertype": "Energy",
+      "subtype": "Basic",
+      "number": "129",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4"
+    },
+    {
+      "id": "base4-60",
+      "name": "Seaking",
+      "nationalPokedexNumber": 119,
+      "imageUrl": "https://images.pokemontcg.io/base4/60.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/60_hires.png",
+      "types": ["Water"],
+      "supertype": "Pokémon",
+      "subtype": "Stage 1",
+      "evolvesFrom": "Goldeen",
+      "hp": "70",
+      "retreatCost": ["Colorless"],
+      "convertedRetreatCost": 1,
+      "number": "60",
+      "artist": "Kagemaru Himeno",
+      "rarity": "Uncommon",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "attacks": [
+        {
+          "cost": ["Water"],
+          "name": "Horn Attack",
+          "text": "",
+          "damage": "10",
+          "convertedEnergyCost": 1
+        },
+        {
+          "cost": ["Water", "Colorless"],
+          "name": "Waterfall",
+          "text": "",
+          "damage": "30",
+          "convertedEnergyCost": 2
+        }
+      ],
+      "weaknesses": [
+        {
+          "type": "Lightning",
+          "value": "×2"
+        }
+      ]
+    },
+    {
+      "id": "base4-80",
+      "name": "Meowth",
+      "nationalPokedexNumber": 52,
+      "imageUrl": "https://images.pokemontcg.io/base4/80.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/80_hires.png",
+      "types": ["Colorless"],
+      "supertype": "Pokémon",
+      "subtype": "Basic",
+      "hp": "50",
+      "retreatCost": ["Colorless"],
+      "convertedRetreatCost": 1,
+      "number": "80",
+      "artist": "Mitsuhiro Arita",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "attacks": [
+        {
+          "cost": ["Colorless", "Colorless"],
+          "name": "Pay Day",
+          "text": "Flip a coin. If heads, draw a card.",
+          "damage": "10",
+          "convertedEnergyCost": 2
+        }
+      ],
+      "resistances": [
+        {
+          "type": "Psychic",
+          "value": "-30"
+        }
+      ],
+      "weaknesses": [
+        {
+          "type": "Fighting",
+          "value": "×2"
+        }
+      ]
+    },
+    {
+      "id": "base4-126",
+      "name": "Fire Energy",
+      "imageUrl": "https://images.pokemontcg.io/base4/126.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/126_hires.png",
+      "supertype": "Energy",
+      "subtype": "Basic",
+      "number": "126",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4"
+    },
+    {
+      "id": "base4-97",
+      "name": "Venonat",
+      "nationalPokedexNumber": 48,
+      "imageUrl": "https://images.pokemontcg.io/base4/97.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/97_hires.png",
+      "types": ["Grass"],
+      "supertype": "Pokémon",
+      "subtype": "Basic",
+      "hp": "40",
+      "retreatCost": ["Colorless"],
+      "convertedRetreatCost": 1,
+      "number": "97",
+      "artist": "Mitsuhiro Arita",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "attacks": [
+        {
+          "cost": ["Grass"],
+          "name": "Stun Spore",
+          "text": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",
+          "damage": "10",
+          "convertedEnergyCost": 1
+        },
+        {
+          "cost": ["Grass", "Colorless"],
+          "name": "Leech Life",
+          "text": "Remove a number of damage counters from Venonat equal to the damage done to the Defending Pokémon (after applying Weakness and Resistance).",
+          "damage": "10",
+          "convertedEnergyCost": 2
+        }
+      ],
+      "weaknesses": [
+        {
+          "type": "Fire",
+          "value": "×2"
+        }
+      ]
+    },
+    {
+      "id": "base4-128",
+      "name": "Lightning Energy",
+      "imageUrl": "https://images.pokemontcg.io/base4/128.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/128_hires.png",
+      "supertype": "Energy",
+      "subtype": "Basic",
+      "number": "128",
+      "artist": "Keiji Kinebuchi",
+      "rarity": "Common",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4"
+    }
+  ]
+}
