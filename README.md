@@ -27,6 +27,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Add Pokemon TCG SDK call as a method to the Cards model to be easier to stub put then directly and try to learn how the inside of the Pokemon TCG SDK. However, it means we can switch Pokemon TCG SDK gem if we wish something different and not break all of the tests. It is assuming that the new Pokemon SDK gem will return a similar response.
 - Hardcode the Pokemon card set code to 'base4' as that is the requirement for this project.
 - Each card helper class Attacks, Card Groups, Types, and Texts are responsible for managing their data. So that if there is a change to how the data is structured. There is a single place to change that data without changing different parts of the codebase. Which can lead to hard to manage systems.
+- For any part of the application that is _not_ types if they find an unknown Type, then it is skipped over as only the Types model is allowed to create Types, so that there is a single point.
 
 ### Database Schema
 

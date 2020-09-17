@@ -13,10 +13,12 @@ class CardGroup < ApplicationRecord
     attributes.each do |attribute|
       type_details = Type.find_by_name(attribute['type'])
 
-      card.send(type_name).create!(
-        type: type_details,
-        value: attribute['value']
-      )
+      unless type_details.nil?
+        card.send(type_name).create!(
+          type: type_details,
+          value: attribute['value']
+        )
+      end
     end
   end
 end

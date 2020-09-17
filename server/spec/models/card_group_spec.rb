@@ -37,5 +37,20 @@ RSpec.describe CardGroup, type: :model do
         expect(card.weaknesses.count).to eq(0)
       end
     end
+
+    context 'card type does not exisit' do
+      it 'not add card type to cards' do
+        group_types = [
+          {
+            'type' => 'Not A Card Group',
+            'value' => '×42'
+          }
+        ]
+
+        CardGroup.add_to_card(card, 'resistances', group_types)
+
+        expect(card.resistances.count).to eq(0)
+      end
+    end
   end
 end
