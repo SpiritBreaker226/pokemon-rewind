@@ -24,6 +24,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - After looking at the HP coming from the Pokemon API for the Card Set for this project, Base 4, its decided, HP will be an integer, which is easier to search throw than a string.
 - To keep the application simple, HP will be 'greater than or equal to' to show as many Pokemon as possible.
 - Add Pokemon TCG SDK gem to take care of the communication between the application and Pokemon TCG and reduce the amount of code in the application, focusing on the application itself.
+- Add Pokemon TCG SDK call as a method to the Cards model to be easier to stub put then directly and try to learn how the inside of the Pokemon TCG SDK. However, it means we can switch Pokemon TCG SDK gem if we wish something different and not break all of the tests. It is assuming that the new Pokemon SDK gem will return a similar response.
 
 ### Database Schema
 

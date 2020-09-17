@@ -45,6 +45,10 @@ class Card < ApplicationRecord
     ability_name.blank? && ability_text.blank?
   end
 
+  def self.access_pokemon_api(set_code: nil)
+    Pokemon::Card.where(set_code: set_code)
+  end
+
   def self.search(field_name: nil, value: nil)
     cards = case field_name
       when 'name'
