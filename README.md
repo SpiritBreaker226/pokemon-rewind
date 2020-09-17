@@ -28,6 +28,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Hardcode the Pokemon card set code to 'base4' as that is the requirement for this project.
 - Each card helper class Attacks, Card Groups, Types, and Texts are responsible for managing their data. So that if there is a change to how the data is structured. There is a single place to change that data without changing different parts of the codebase. Which can lead to hard to manage systems.
 - For any part of the application that is _not_ types if they find an unknown Type, then it is skipped over as only the Types model is allowed to create Types, so that there is a single point.
+- Retreat cost and Attack Cost can use the same card type multiple times. As a result, the card types are counted and add to the value field in the table that connects them to the Type table.
 
 ### Database Schema
 
@@ -35,7 +36,7 @@ For the schema, the card table is split into the helper tables and is normalized
 
 Besides, this will reduce the amount of data coming from the server, giving a better performance. If the user wants more details, then they can click on that card and get more information.
 
-- [Link to the Database diagram for the application.](https://photos.app.goo.gl/7SyxD7cw4uwXdkWm9)
+- [Link to the Database diagram for the application.](https://photos.app.goo.gl/XrRAMHiVhiLXeaCj7)
 
 ### Frontend
 

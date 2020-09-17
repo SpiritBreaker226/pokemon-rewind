@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_130857) do
+ActiveRecord::Schema.define(version: 2020_09_17_224212) do
 
   create_table "attacks", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_130857) do
   create_table "attacks_types", force: :cascade do |t|
     t.integer "attack_id"
     t.integer "type_id"
+    t.integer "value", limit: 4, null: false
     t.index ["attack_id"], name: "index_attacks_types_on_attack_id"
     t.index ["type_id"], name: "index_attacks_types_on_type_id"
   end
