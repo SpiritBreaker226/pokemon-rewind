@@ -1,12 +1,13 @@
 import { Card } from './Cards'
 import { Pagination } from './Pagination'
-import { Sorting, CardQuery } from './CardQuery'
+import { Sorting, CardQuery, Method } from './CardQuery'
 
 export interface InitialState {
   cards: Card[]
   pagination: Pagination
   urlToEndpoint: string
   search: string
+  method: Method
   errorMessage: string
   isLoading: boolean
   sorting: Sorting
@@ -32,6 +33,7 @@ interface CardsPayload {
 interface CallingServerPayload {
   [Types.UpdateURL]: {
     params: CardQuery
+    method: Method
   }
   [Types.UpdateLoading]: {
     isLoading: boolean

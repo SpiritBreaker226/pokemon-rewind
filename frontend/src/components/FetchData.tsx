@@ -30,7 +30,25 @@ const FetchData: FunctionComponent = () => {
           payload: { isLoading: true },
         })
 
-        const res = await axios.get(state.urlToEndpoint)
+        if (state.method === 'DELETE') {
+          await axios.delete(state.urlToEndpoint)
+
+          dispatch({
+            type: Types.UpdateCards,
+            payload: {
+              cards: [],
+              pagination: 1,
+              isLoading: false,
+            },
+          })
+
+          return
+        }
+
+        const res =
+          state.method === 'POST'
+            ? await axios.post(state.urlToEndpoint)
+            : await axios.get(state.urlToEndpoint)
 
         dispatch({
           type: Types.UpdateCards,
@@ -52,7 +70,7 @@ const FetchData: FunctionComponent = () => {
     }
 
     fetchData()
-  }, [dispatch, state.urlToEndpoint])
+  }, [dispatch, state.urlToEndpoint, state.method])
 
   if (state.isLoading)
     return (

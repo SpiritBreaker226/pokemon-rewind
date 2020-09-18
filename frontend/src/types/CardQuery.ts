@@ -10,4 +10,6 @@ export interface Sorting {
   dir: Direction
 }
 
+export type Method = 'GET' | 'POST' | 'DELETE'
+
 export type Direction = 'asc' | 'desc' | undefined

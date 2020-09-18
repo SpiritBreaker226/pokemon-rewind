@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { Card } from '../../types/Cards'
-import { Direction } from '../../types/CardQuery'
+import { Direction, Method } from '../../types/CardQuery'
 import { Pagination } from '../../types/Pagination'
 
 import { AppContext } from '../../contexts/AppContext'
@@ -60,6 +60,7 @@ export interface TestingState {
   pagination?: Pagination
   urlToEndpoint?: string
   search?: string
+  method?: Method
   errorMessage?: string
   isLoading?: boolean
   sorting?: {
@@ -89,6 +90,7 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
         },
         urlToEndpoint: '',
         search: '',
+        method: 'GET',
         errorMessage: '',
         sorting: {
           fieldName: undefined,

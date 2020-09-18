@@ -32,7 +32,7 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
         }
       )
 
-      return { ...state, urlToEndpoint: newUrl }
+      return { ...state, urlToEndpoint: newUrl, method: action.payload.method }
     case Types.UpdateLoading:
       return { ...state, isLoading: action.payload.isLoading }
     case Types.UpdateErrorMessageFromServer:
