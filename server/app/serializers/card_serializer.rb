@@ -3,18 +3,18 @@ class CardSerializer
 
   attributes(
     :name,
+    :national_pokedex_number,
     :subtype,
     :supertype,
+    :hp,
     :artist,
+    :converted_retreat_cost,
+    :evolves_from,
     :number,
     :rarity,
     :series,
     :set,
-    :set_code,
-    :national_pokedex_number,
-    :hp,
-    :converted_retreat_cost,
-    :evolves_from
+    :set_code
   )
 
   # use rails cache with a separate namespace and fixed expiry
