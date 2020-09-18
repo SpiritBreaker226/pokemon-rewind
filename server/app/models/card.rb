@@ -42,7 +42,7 @@ class Card < ApplicationRecord
   end
 
   def with_an_ability?
-    ability_name.blank? && ability_text.blank?
+    ability_name.nil? && ability_text.nil?
   end
 
   def self.access_pokemon_api(set_code: nil)
