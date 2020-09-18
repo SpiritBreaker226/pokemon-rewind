@@ -4,9 +4,9 @@ RSpec.describe "Cards", type: :request do
   describe 'GET /cards' do
     context 'get the first page of cards' do
       before(:each) do
-        create_list(:card, 10)
+        create_list(:card, 20)
 
-        get '/cards'
+        get '/cards?page=1'
       end
 
       it 'returns cards' do
@@ -24,20 +24,20 @@ RSpec.describe "Cards", type: :request do
     context 'searching' do
       context 'for name Mewtwo' do
         it 'returns all cards and status code 200' do
-          create_list(:card, 11, name: "Mewtwo")
+          create_list(:card, 5, name: "Mewtwo")
 
-          get "/cards?name=mewtwo"
+          get "/cards?page=1&name=mewtwo"
 
           json = JSON.parse(response.body)
 
           expect(json).not_to be_empty
-          expect(json['cards']['data'].count).to eq(11)
+          expect(json['cards']['data'].count).to eq(5)
           expect(response).to have_http_status(200)
         end
 
         context 'when Mewtwo is not found' do
           it 'returns status code 200 with an empty array' do
-            get "/cards?name=Mewtwo"
+            get "/cards?page=1&name=Mewtwo"
 
             json = JSON.parse(response.body)
 
@@ -52,12 +52,22 @@ RSpec.describe "Cards", type: :request do
           create(:card, hp: 200)
           create(:card, hp: 300)
 
-          get "/cards?hp=200"
+          get "/cards?page=1&hp=200"
 
           json = JSON.parse(response.body)
 
           expect(json['cards']['data'].count).to eq(2)
           expect(response).to have_http_status(200)
+        end
+      end
+    end
+
+    context 'when doing paginate page' do
+      context 'if no page parmas is found' do
+        it 'should send back a 400 error' do
+          get '/cards'
+
+          expect(response).to have_http_status(400)
         end
       end
     end

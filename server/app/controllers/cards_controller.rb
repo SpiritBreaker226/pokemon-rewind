@@ -1,29 +1,47 @@
 class CardsController < ApplicationController
   def index
+    if params["page"].present? == false
+      render status: :bad_request
+      return
+    end
+
     field_name = params.keys.select {
-      |key| key != 'controller' && key != 'action'
+      |key| key != 'controller' && key != 'action'&& key != 'page'
     }
 
     field_name = field_name.first unless field_name.nil?
 
+    current_page = params["page"]
     cards = Card.search(
       field_name: field_name,
-      value: params[field_name]
+      value: params[field_name],
+      page: current_page
     )
 
     render(
       json: {
         cards: CardSerializer.new(cards).serializable_hash,
+        pagination: {
+          rows_per_page: cards.page(current_page).limit_value,
+          page_total: cards.page(current_page).total_pages,
+          current_page: current_page
+        },
       }.to_json
     )
   end
 
   def create
     cards = Card.back_up_from_pokemon_api
+    current_page = '1'
 
     render(
       json: {
         cards: CardSerializer.new(cards).serializable_hash,
+        pagination: {
+          rows_per_page: cards.page(current_page).limit_value,
+          page_total: cards.page(current_page).total_pages,
+          current_page: current_page
+        },
       }.to_json,
       status: :created
     )

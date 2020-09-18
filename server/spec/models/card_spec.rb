@@ -64,6 +64,22 @@ RSpec.describe Card, type: :model do
         end
       end
     end
+
+    context 'when doing pagination' do
+      before(:each) do
+        create_list(:card, 30)
+      end
+
+      context 'and searching for names' do
+        it 'find all card name Zoe' do
+          create_list(:card, 2, name: "Zoe #{Faker::Name.last_name}")
+
+          page_cards = Card.search(page: 1, name: 'zoe')
+
+          expect(page_cards.count).to eq(2)
+        end
+      end
+    end
   end
 
   describe '#back_up_from_pokemon_api' do

@@ -121,7 +121,7 @@ class Card < ApplicationRecord
     Card.all
   end
 
-  def self.search(field_name: nil, value: nil)
+def self.search(field_name: nil, value: nil, page: nil)
     cards = case field_name
       when 'name'
         Card.where("LOWER(name) LIKE ?", "%#{value.downcase}%")
@@ -137,6 +137,6 @@ class Card < ApplicationRecord
         end
     end
 
-    cards.order(name: :asc)
+    page.nil? ? cards.order(name: :asc) : cards.order(name: :asc).page(page)
   end
 end
