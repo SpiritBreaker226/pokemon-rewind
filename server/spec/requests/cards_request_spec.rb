@@ -86,4 +86,19 @@ RSpec.describe "Cards", type: :request do
       end
     end
   end
+
+  describe 'DELETE /cards' do
+    it 'remove all cards connected to the Cards table' do
+      create_list(:card_with_all_attributes, 10)
+
+      delete '/cards/all'
+
+      expect(Card.all.count).to eq(0)
+      expect(Text.all.count).to eq(0)
+      expect(Attack.all.count).to eq(0)
+      expect(AttacksTypes.all.count).to eq(0)
+      expect(CardGroup.all.count).to eq(0)
+      expect(Type.all.count).to eq(10)
+    end
+  end
 end

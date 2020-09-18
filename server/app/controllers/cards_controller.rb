@@ -28,4 +28,13 @@ class CardsController < ApplicationController
       status: :created
     )
   end
+
+  def destroy
+    CardGroup.delete_all
+    Text.delete_all
+    Attack.destroy_all
+    Card.destroy_all
+
+    head :no_content
+  end
 end

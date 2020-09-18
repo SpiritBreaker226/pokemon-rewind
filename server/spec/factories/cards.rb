@@ -37,5 +37,15 @@ FactoryBot.define do
         card.reload
       end
     end
+
+    factory :card_with_all_attributes do
+      after(:create) do |card, evaluator|
+        create_list(:text, 1, card_id: card)
+        create_list(:type, 1, cards: [card])
+        create_list(:attack, 2, cards: [card])
+
+        card.reload
+      end
+    end
   end
 end
