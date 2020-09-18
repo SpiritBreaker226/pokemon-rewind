@@ -31,6 +31,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Retreat cost and Attack Cost can use the same card type multiple times. As a result, the card types are counted and add to the value field in the table that connects them to the Type table.
 - Due to time constraints, the `back_up_from_pokemon_api` method in the card model is not refactored, those it is bigger then it should.
 - `access_pokemon_api` is assumed to work fine or that the Pokemon TCG SDK will take care of network errors. As there is no time to make sure that when the Pokemon API fails that it would do gracefully, and let the user and developer know.
+- Add happy paths testing to the controller test and some of the model tests to help speed the development along on the server.
 
 ### Database Schema
 
