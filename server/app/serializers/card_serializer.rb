@@ -3,8 +3,6 @@ class CardSerializer
 
   attributes(
     :name,
-    :image_url,
-    :image_url_hi_res,
     :subtype,
     :supertype,
     :artist,

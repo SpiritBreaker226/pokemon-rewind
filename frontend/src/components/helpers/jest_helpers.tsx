@@ -11,8 +11,6 @@ export const cards: Card[] = [
   {
     attributes: {
       name: 'Lightning Energy',
-      image_url: 'https://images.pokemontcg.io/base4/128.png',
-      image_url_hi_res: 'https://images.pokemontcg.io/base4/128_hires.png',
       supertype: 'Energy',
       subtype: 'Basic',
       number: '128',
@@ -27,8 +25,6 @@ export const cards: Card[] = [
     attributes: {
       name: 'Jigglypuff',
       national_pokedex_number: 39,
-      image_url: 'https://images.pokemontcg.io/base4/77.png',
-      image_url_hi_res: 'https://images.pokemontcg.io/base4/77_hires.png',
       supertype: 'Pokémon',
       subtype: 'Basic',
       hp: 60,
@@ -45,8 +41,6 @@ export const cards: Card[] = [
     attributes: {
       name: 'Squirtle',
       national_pokedex_number: 7,
-      image_url: 'https://images.pokemontcg.io/base4/93.png',
-      image_url_hi_res: 'https://images.pokemontcg.io/base4/93_hires.png',
       supertype: 'Pokémon',
       subtype: 'Basic',
       hp: 40,

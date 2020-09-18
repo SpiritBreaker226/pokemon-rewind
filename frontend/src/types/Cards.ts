@@ -4,8 +4,6 @@ export interface Card {
 
 export interface Stats {
   name: string
-  image_url: string
-  image_url_hi_res: string
   subtype: string
   supertype: string
   artist: string
