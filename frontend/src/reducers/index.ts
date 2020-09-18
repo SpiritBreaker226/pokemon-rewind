@@ -26,6 +26,12 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
         urlToEndpoint: currentURL.url,
         method: action.payload.method,
       }
+    case Types.PurgeBackUp:
+      return {
+        ...state,
+        urlToEndpoint: `${currentURL.url}/all`,
+        method: action.payload.method,
+      }
     case Types.UpdateURL:
       const query = { ...currentURL.query, ...action.payload.params }
       const newUrl = queryString.stringifyUrl(

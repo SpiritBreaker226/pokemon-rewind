@@ -50,6 +50,15 @@ const Control = () => {
     })
   }
 
+  const handleClickBackUpPurge = () => {
+    dispatch({
+      type: Types.PurgeBackUp,
+      payload: {
+        method: 'DELETE',
+      },
+    })
+  }
+
   return (
     <section className={classes.control}>
       <Button
@@ -65,6 +74,7 @@ const Control = () => {
         variant="outlined"
         data-testid="control_backup_purge"
         color="primary"
+        onClick={handleClickBackUpPurge}
       >
         Purge Backup
       </Button>

@@ -16,6 +16,7 @@ export interface InitialState {
 export enum Types {
   UpdateCards = 'UPDATE_CARDS',
   BackUpFromAPI = 'BACK_UP_FROM_API',
+  PurgeBackUp = 'PURGE_BACK_UP',
   UpdateURL = 'UPDATE_URL',
   UpdateSearch = 'UPDATE_SEARCH',
   UpdateSorting = 'UPDATE_SORTING',
@@ -33,6 +34,9 @@ interface CardsPayload {
 
 interface CallingServerPayload {
   [Types.BackUpFromAPI]: {
+    method: Method
+  }
+  [Types.PurgeBackUp]: {
     method: Method
   }
   [Types.UpdateURL]: {

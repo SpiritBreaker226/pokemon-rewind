@@ -110,6 +110,24 @@ describe('App', () => {
           ).toBeInTheDocument()
         })
       })
+
+      describe('to purge back ups', () => {
+        it('click on purge back up and display no cards found', async () => {
+          fireEvent.click(screen.getByTestId('control_backup_purge'))
+
+          mockedAxios.delete.mockImplementationOnce(async () => {})
+
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
+
+          await waitFor(() => screen.getByTestId('searchBox'))
+
+          expect(
+            screen.queryByText('No Cards Found', { exact: false })
+          ).toBeInTheDocument()
+        })
+      })
     })
   })
 
