@@ -232,6 +232,50 @@
       "series": "Base",
       "set": "Base Set 2",
       "setCode": "base4"
+    },
+    {
+      "id": "base4-37",
+      "name": "Dodrio",
+      "nationalPokedexNumber": 85,
+      "imageUrl": "https://images.pokemontcg.io/base4/37.png",
+      "imageUrlHiRes": "https://images.pokemontcg.io/base4/37_hires.png",
+      "types": ["Colorless"],
+      "supertype": "Pokémon",
+      "subtype": "Stage 1",
+      "evolvesFrom": "Doduo",
+      "ability": {
+        "name": "Retreat Aid",
+        "text": "As long as Dodrio is Benched, pay 1 Colorless less to retreat your Active Pokémon.",
+        "type": "Pokémon Power"
+      },
+      "hp": "70",
+      "number": "37",
+      "artist": "Mitsuhiro Arita",
+      "rarity": "Uncommon",
+      "series": "Base",
+      "set": "Base Set 2",
+      "setCode": "base4",
+      "attacks": [
+        {
+          "cost": ["Colorless", "Colorless", "Colorless"],
+          "name": "Rage",
+          "text": "Does 10 damage plus 10 more damage for each damage counter on Dodrio.",
+          "damage": "10+",
+          "convertedEnergyCost": 3
+        }
+      ],
+      "resistances": [
+        {
+          "type": "Fighting",
+          "value": "-30"
+        }
+      ],
+      "weaknesses": [
+        {
+          "type": "Lightning",
+          "value": "×2"
+        }
+      ]
     }
   ]
 }
