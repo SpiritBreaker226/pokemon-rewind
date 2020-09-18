@@ -39,6 +39,21 @@ describe('App', () => {
     })
 
     describe('when searching', () => {
+      it('toggle cards search form', async () => {
+        expect(screen.getByTestId('searchButton')).not.toBeVisible()
+        expect(screen.getByTestId('searchBox')).not.toBeVisible()
+
+        fireEvent.click(screen.getByTestId('searchToggle'))
+
+        expect(screen.getByTestId('searchButton')).toBeVisible()
+        expect(screen.getByTestId('searchBox')).toBeVisible()
+
+        fireEvent.click(screen.getByTestId('searchToggle'))
+
+        expect(screen.getByTestId('searchButton')).not.toBeVisible()
+        expect(screen.getByTestId('searchBox')).not.toBeVisible()
+      })
+
       it('find card name Squirtle', async () => {
         fireEvent.change(screen.getByTestId('searchBox'), {
           target: { value: 'squirtle' },

@@ -61,10 +61,21 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
 
 export const searchReducer = (state: InitialState, action: Action) => {
   switch (action.type) {
+    case Types.ToggleSearch:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          toggle: action.payload.toggle,
+        },
+      }
     case Types.UpdateSearch:
       return {
         ...state,
-        search: action.payload.search,
+        search: {
+          ...state.search,
+          value: action.payload.search,
+        },
       }
     case Types.UpdateSorting:
       return {

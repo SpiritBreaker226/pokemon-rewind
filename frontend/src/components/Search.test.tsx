@@ -10,10 +10,10 @@ jest.mock('axios')
 
 describe('Search', () => {
   it('renders cards search', async () => {
-    const { getByTestId, getByText } = render(<Search />)
+    const { getByTestId } = render(<Search />)
 
-    expect(getByText('Search', { exact: false })).toBeInTheDocument()
-    expect(getByTestId('searchBox')).toBeInTheDocument()
+    expect(getByTestId('searchButton')).not.toBeVisible()
+    expect(getByTestId('searchBox')).not.toBeVisible()
   })
 
   describe('using searchBox', () => {
@@ -21,7 +21,7 @@ describe('Search', () => {
       const { getByTestId } = render(
         <MakeWrapper
           state={{
-            search: 'squirtle',
+            search: { toggle: true, value: 'squirtle' },
           }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateURL) {
@@ -42,7 +42,7 @@ describe('Search', () => {
     it('should not search on non-enter key', () => {
       const { getByTestId } = render(
         <MakeWrapper
-          state={{}}
+          state={{ search: { toggle: true, value: '' } }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateSearch) {
               expect(action.payload.search).toEqual('s')

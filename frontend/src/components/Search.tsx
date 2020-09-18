@@ -33,7 +33,15 @@ const Search = () => {
     dispatch({
       type: Types.UpdateURL,
       payload: {
-        params: { name: state.search, page: '1' },
+        params: { name: state.search.value, page: '1' },
+      },
+    })
+  }
+  const toggleChecked = () => {
+    dispatch({
+      type: Types.ToggleSearch,
+      payload: {
+        toggle: !state.search.toggle,
       },
     })
   }
@@ -43,25 +51,40 @@ const Search = () => {
     }
   }
 
+  const displaySearchForm = state.search.toggle ? 'block' : 'none'
   // TODO: Add Search Backup button to toggle search aaera as to the requirements
   // also add in dropdowns fro rarity and a field select that will show text
   return (
     <section>
-      <TextField
-        type="text"
-        name="searchBox"
-        id="searchBox"
-        inputProps={{ 'data-testid': 'searchBox' }}
-        value={state.search}
-        placeholder="Search by"
-        className={classes.searchText}
-        onKeyPress={handleTextFieldKeyPress}
-        onChange={handleChangeSearchBox}
-      />
-
-      <Button variant="outlined" onClick={handleClickSearch}>
-        Search
+      <Button
+        variant="outlined"
+        onClick={toggleChecked}
+        data-testid="searchToggle"
+      >
+        Search Backup
       </Button>
+
+      <section style={{ display: displaySearchForm }}>
+        <TextField
+          type="text"
+          name="searchBox"
+          id="searchBox"
+          inputProps={{ 'data-testid': 'searchBox' }}
+          value={state.search.value}
+          placeholder="Search by"
+          className={classes.searchText}
+          onKeyPress={handleTextFieldKeyPress}
+          onChange={handleChangeSearchBox}
+        />
+
+        <Button
+          variant="outlined"
+          onClick={handleClickSearch}
+          data-testid="searchButton"
+        >
+          Search
+        </Button>
+      </section>
     </section>
   )
 }

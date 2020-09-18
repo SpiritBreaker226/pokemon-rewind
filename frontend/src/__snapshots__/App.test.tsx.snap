@@ -21,38 +21,58 @@ exports[`App fetch card data renders cards component 1`] = `
         class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
       >
         <section>
-          <div
-            class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
-          >
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-            >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                data-testid="searchBox"
-                id="searchBox"
-                name="searchBox"
-                placeholder="Search by"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+            data-testid="searchToggle"
             tabindex="0"
             type="button"
           >
             <span
               class="MuiButton-label"
             >
-              Search
+              Search Backup
             </span>
             <span
               class="MuiTouchRipple-root"
             />
           </button>
+          <section
+            style="display: none;"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
+            >
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  data-testid="searchBox"
+                  id="searchBox"
+                  name="searchBox"
+                  placeholder="Search by"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+              data-testid="searchButton"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Search
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </section>
         </section>
       </div>
       <div
@@ -61,36 +81,48 @@ exports[`App fetch card data renders cards component 1`] = `
         <section
           class="makeStyles-control-5"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-            data-testid="control_backup_create"
-            tabindex="0"
-            type="button"
+          <div
+            class="MuiGrid-root MuiGrid-container"
           >
-            <span
-              class="MuiButton-label"
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
             >
-              Create Backup
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-            data-testid="control_backup_purge"
-            tabindex="0"
-            type="button"
-          >
-            <span
-              class="MuiButton-label"
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                data-testid="control_backup_create"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Create Backup
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
             >
-              Purge Backup
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+                data-testid="control_backup_purge"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Purge Backup
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -422,7 +454,7 @@ exports[`App fetch card data renders cards component 1`] = `
       </div>
       <nav
         aria-label="pagination navigation"
-        class="MuiPagination-root makeStyles-pagination-8"
+        class="MuiPagination-root makeStyles-pagination-7"
         data-testid="pagination"
       >
         <ul

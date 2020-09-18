@@ -3,9 +3,10 @@ import React, { FunctionComponent } from 'react'
 import { Card } from '../../types/Cards'
 import { Direction, Method } from '../../types/CardQuery'
 import { Pagination } from '../../types/Pagination'
+import { Action } from '../../types/Actions'
+import { Search } from '../../types/Search'
 
 import { AppContext } from '../../contexts/AppContext'
-import { Action } from '../../types/Actions'
 
 export const cards: Card[] = [
   {
@@ -59,7 +60,7 @@ export interface TestingState {
   cards?: Card[]
   pagination?: Pagination
   urlToEndpoint?: string
-  search?: string
+  search?: Search
   method?: Method
   errorMessage?: string
   isLoading?: boolean
@@ -89,7 +90,10 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
           current_page: '1',
         },
         urlToEndpoint: '',
-        search: '',
+        search: {
+          toggle: false,
+          value: '',
+        },
         method: 'GET',
         errorMessage: '',
         sorting: {

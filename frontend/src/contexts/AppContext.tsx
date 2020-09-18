@@ -17,7 +17,10 @@ const initialState: InitialState = {
     current_page: '1',
   },
   urlToEndpoint: `${process.env.REACT_APP_BASE_API_URL}/cards?page=1`,
-  search: '',
+  search: {
+    toggle: false,
+    value: '',
+  },
   method: 'GET',
   sorting: {
     fieldName: undefined,

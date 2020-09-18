@@ -1,12 +1,13 @@
 import { Card } from './Cards'
 import { Pagination } from './Pagination'
 import { Sorting, CardQuery, Method } from './CardQuery'
+import { Search } from './Search'
 
 export interface InitialState {
   cards: Card[]
   pagination: Pagination
   urlToEndpoint: string
-  search: string
+  search: Search
   method: Method
   errorMessage: string
   isLoading: boolean
@@ -18,6 +19,7 @@ export enum Types {
   BackUpFromAPI = 'BACK_UP_FROM_API',
   PurgeBackUp = 'PURGE_BACK_UP',
   UpdateURL = 'UPDATE_URL',
+  ToggleSearch = 'TOGGLE_SEARCH',
   UpdateSearch = 'UPDATE_SEARCH',
   UpdateSorting = 'UPDATE_SORTING',
   UpdateLoading = 'UPDATE_LOADING',
@@ -53,6 +55,9 @@ interface CallingServerPayload {
 }
 
 interface SearchPayload {
+  [Types.ToggleSearch]: {
+    toggle: boolean
+  }
   [Types.UpdateSearch]: {
     search: string
   }
