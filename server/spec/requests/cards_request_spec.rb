@@ -62,4 +62,28 @@ RSpec.describe "Cards", type: :request do
       end
     end
   end
+
+  describe 'POST /cards' do
+    let (:pokemon_api_response) {
+      JSON.parse(file_fixture('pokemon_api_response.json').read)
+    }
+
+    context 'create cards from Pokemon API' do
+      it 'returns status code 201' do
+        create(:type, name: 'Psychic')
+        create(:type, name: 'Fighting')
+
+        allow(Card).to(
+          receive(:access_pokemon_api).and_return(pokemon_api_response)
+        )
+
+        post '/cards'
+
+        json = JSON.parse(response.body)
+
+        expect(json['cards']['data'].count).to eq(11)
+        expect(response).to have_http_status(201)
+      end
+    end
+  end
 end

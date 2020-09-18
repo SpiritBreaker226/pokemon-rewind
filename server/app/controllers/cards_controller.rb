@@ -17,4 +17,15 @@ class CardsController < ApplicationController
       }.to_json
     )
   end
+
+  def create
+    cards = Card.back_up_from_pokemon_api
+
+    render(
+      json: {
+        cards: CardSerializer.new(cards).serializable_hash,
+      }.to_json,
+      status: :created
+    )
+  end
 end
