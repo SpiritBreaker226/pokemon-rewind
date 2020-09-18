@@ -29,6 +29,8 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - Each card helper class Attacks, Card Groups, Types, and Texts are responsible for managing their data. So that if there is a change to how the data is structured. There is a single place to change that data without changing different parts of the codebase. Which can lead to hard to manage systems.
 - For any part of the application that is _not_ types if they find an unknown Type, then it is skipped over as only the Types model is allowed to create Types, so that there is a single point.
 - Retreat cost and Attack Cost can use the same card type multiple times. As a result, the card types are counted and add to the value field in the table that connects them to the Type table.
+- Due to time constraints, the `back_up_from_pokemon_api` method in the card model is not refactored, those it is bigger then it should.
+- `access_pokemon_api` is assumed to work fine or that the Pokemon TCG SDK will take care of network errors. As there is no time to make sure that when the Pokemon API fails that it would do gracefully, and let the user and developer know.
 
 ### Database Schema
 

@@ -49,6 +49,78 @@ class Card < ApplicationRecord
     Pokemon::Card.where(set_code: set_code)
   end
 
+  def self.back_up_from_pokemon_api(set_code: 'base4')
+    cards = Card.access_pokemon_api(set_code: set_code)
+    hp = nil
+    ability = nil
+    created_card = nil
+
+    cards['cards'].each do |card|
+      hp = card['hp'].nil? ? nil : card['hp'].to_i
+
+      if card['ability'].nil?
+        ability = {
+          name: nil,
+          text: nil,
+          type: nil,
+        }
+      else
+        ability = {
+          name: card['ability']['name'],
+          text: card['ability']['text'],
+          type: card['ability']['type'],
+        }
+      end
+
+      created_card = Card.create!(
+        name: card['name'],
+        image_url: card['imageUrl'],
+        image_url_hi_res: card['imageUrlHiRes'],
+        subtype: card['subtype'],
+        supertype: card['supertype'],
+        artist: card['artist'],
+        number: card['number'],
+        rarity: card['rarity'],
+        series: card['series'],
+        set: card['set'],
+        set_code: card['setCode'],
+        national_pokedex_number: card['nationalPokedexNumber'],
+        hp: hp,
+        converted_retreat_cost: card['convertedRetreatCost'],
+        evolves_from: card['evolvesFrom'],
+        ability_name: ability[:name],
+        ability_text: ability[:text],
+        ability_type: ability[:type]
+      )
+
+      unless card['types'].nil?
+        Type.add_to_card(created_card, card['types'])
+      end
+
+      unless card['text'].nil?
+        Text.add_to_card(created_card, card['text'])
+      end
+
+      unless card['attacks'].nil?
+        Attack.add_to_card(created_card, card['attacks'])
+      end
+
+      unless card['retreatCost'].nil?
+        CardGroup.add_retreat_costs_to_card(created_card, card['retreatCost'])
+      end
+
+      unless card['resistances'].nil?
+        CardGroup.add_to_card(created_card, 'resistances', card['resistances'])
+      end
+
+      unless card['weaknesses'].nil?
+        CardGroup.add_to_card(created_card, 'weaknesses', card['weaknesses'])
+      end
+    end
+
+    Card.all
+  end
+
   def self.search(field_name: nil, value: nil)
     cards = case field_name
       when 'name'

@@ -65,4 +65,52 @@ RSpec.describe Card, type: :model do
       end
     end
   end
+
+  describe '#back_up_from_pokemon_api' do
+    let (:pokemon_api_response) {
+      JSON.parse(file_fixture('pokemon_api_response.json').read)
+    }
+
+    context 'when back up the cards' do
+      let (:eigth_card) { Card.last(5).first }
+
+      before :each do
+        create(:type, name: 'Psychic')
+        create(:type, name: 'Fighting')
+
+        allow(Card).to(
+          receive(:access_pokemon_api).and_return(pokemon_api_response)
+        )
+
+        @cards = Card.back_up_from_pokemon_api
+      end
+
+      it 'should populate the Cards table' do
+        expect(@cards.count).to eq(11)
+
+        expect(eigth_card.name).to eq('Meowth')
+        expect(eigth_card.hp).to eq(50)
+        expect(eigth_card.ability_name).to be_nil
+
+        expect(Card.last.ability_name).to eq('Retreat Aid')
+        expect(Card.last.ability_text).to include('pay 1 Colorless')
+        expect(Card.last.ability_type).to eq('Pokémon Power')
+      end
+
+      it 'should populate the Attacks table' do
+        expect(eigth_card.attacks.first.name).to eq('Pay Day')
+      end
+
+      it 'should populate the Types & Text table' do
+        expect(eigth_card.types.first.name).to eq('Colorless')
+        expect(Card.first.texts.first.description).to include('draw a card')
+      end
+
+      it 'should populate the Card Groups table' do
+        expect(eigth_card.retreat_costs.first.type.name).to eq('Colorless')
+        expect(eigth_card.resistances.first.type.name).to eq('Psychic')
+        expect(eigth_card.weaknesses.first.type.name).to eq('Fighting')
+      end
+    end
+  end
 end
