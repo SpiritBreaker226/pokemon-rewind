@@ -91,6 +91,26 @@ describe('App', () => {
         expect(screen.getAllByRole('row').length).toEqual(4)
       })
     })
+
+    describe('when using contorls', () => {
+      describe('to backing up', () => {
+        it('click on back up and get the first page back', async () => {
+          fireEvent.click(screen.getByTestId('control_backup_create'))
+
+          mockedAxios.post.mockImplementationOnce(async () => {})
+
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
+
+          await waitFor(() => screen.getByTestId('searchBox'))
+
+          expect(
+            screen.getByText('Unable to Retrive Data', { exact: false })
+          ).toBeInTheDocument()
+        })
+      })
+    })
   })
 
   describe('when loading the page', () => {

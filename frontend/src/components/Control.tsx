@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 
-import queryString from 'query-string'
-
 import { Button } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+
+import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 
@@ -37,14 +37,18 @@ const useStyles = makeStyles((theme: Theme) =>
 const Control = () => {
   const classes = useStyles()
 
-  const { state } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   if (state.isLoading) return null
 
-  const currentURL = queryString.parseUrl(state.urlToEndpoint)
-
-  // TODO: Add actions to send POST and DELETE to the server and display a mesage that when task is
-  // complated
+  const handleClickBackUp = () => {
+    dispatch({
+      type: Types.BackUpFromAPI,
+      payload: {
+        method: 'POST',
+      },
+    })
+  }
 
   return (
     <section className={classes.control}>
@@ -52,6 +56,7 @@ const Control = () => {
         variant="outlined"
         data-testid="control_backup_create"
         color="primary"
+        onClick={handleClickBackUp}
       >
         Create Backup
       </Button>

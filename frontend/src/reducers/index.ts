@@ -17,9 +17,16 @@ export const cardsReducer = (state: InitialState, action: Action) => {
 }
 
 export const callingServerReducer = (state: InitialState, action: Action) => {
+  const currentURL = queryString.parseUrl(state.urlToEndpoint)
+
   switch (action.type) {
+    case Types.BackUpFromAPI:
+      return {
+        ...state,
+        urlToEndpoint: currentURL.url,
+        method: action.payload.method,
+      }
     case Types.UpdateURL:
-      const currentURL = queryString.parseUrl(state.urlToEndpoint)
       const query = { ...currentURL.query, ...action.payload.params }
       const newUrl = queryString.stringifyUrl(
         {
