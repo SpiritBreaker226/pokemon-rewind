@@ -2,8 +2,7 @@ class Attack < ApplicationRecord
   has_and_belongs_to_many :cards
   has_many :costs, class_name: "AttacksTypes", dependent: :delete_all
 
-  validates :name, :text, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   def self.add_to_card(card, attacks)
     attacks.each do |attack|
