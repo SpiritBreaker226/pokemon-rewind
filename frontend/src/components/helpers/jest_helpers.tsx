@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import UserEvent from '@testing-library/user-event'
+import { within, waitForElementToBeRemoved } from '@testing-library/react'
 
 import { Card } from '../../types/Cards'
 import { Direction, Method } from '../../types/CardQuery'
@@ -109,3 +111,46 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
     {children}
   </AppContext.Provider>
 )
+
+export const selectMaterialUiSelectOption = async (
+  selectElement: HTMLElement,
+  optionText: string
+) =>
+  new Promise((resolve) => {
+    if (!selectElement || !selectElement.parentNode) {
+      throw new Error(
+        'Unable to find select element for selectMaterialUiSelectOption'
+      )
+      return
+    }
+
+    // The the button that opens the dropdown, which is a sibling of the input
+    const selectButton = selectElement.parentNode.querySelector('[role=button]')
+
+    if (!selectButton) {
+      throw new Error(
+        'Unable to find select button for selectMaterialUiSelectOption'
+      )
+      return
+    }
+
+    // Open the select dropdown
+    UserEvent.click(selectButton)
+
+    // Get the dropdown element. We don't use getByRole() because it includes <select>s too.
+    const listbox = document.body.querySelector<HTMLElement>('ul[role=listbox]')
+
+    if (!listbox) {
+      throw new Error('Unable to find listbox for selectMaterialUiSelectOption')
+      return
+    }
+
+    // Click the list item
+    const listItem = within(listbox).getByText(optionText)
+    UserEvent.click(listItem)
+
+    // Wait for the listbox to be removed, so it isn't visible in subsequent calls
+    waitForElementToBeRemoved(() =>
+      document.body.querySelector('ul[role=listbox]')
+    ).then(resolve)
+  })
