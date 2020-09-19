@@ -26,7 +26,7 @@ const Search = () => {
   const handleChangeSearchBox = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: Types.UpdateSearch,
-      payload: { search: e.target.value },
+      payload: { value: e.target.value },
     })
   }
   const handleClickSearch = () => {

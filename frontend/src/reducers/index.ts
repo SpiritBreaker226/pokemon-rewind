@@ -74,7 +74,7 @@ export const searchReducer = (state: InitialState, action: Action) => {
         ...state,
         search: {
           ...state.search,
-          value: action.payload.search,
+          value: action.payload.value,
         },
       }
     case Types.UpdateSorting:

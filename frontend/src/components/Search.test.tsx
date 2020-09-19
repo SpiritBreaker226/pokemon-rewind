@@ -45,7 +45,7 @@ describe('Search', () => {
           state={{ search: { toggle: true, value: '' } }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateSearch) {
-              expect(action.payload.search).toEqual('s')
+              expect(action.payload.value).toEqual('s')
             }
           }}
         >

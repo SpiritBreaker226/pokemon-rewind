@@ -59,7 +59,7 @@ interface SearchPayload {
     toggle: boolean
   }
   [Types.UpdateSearch]: {
-    search: string
+    value: string
   }
   [Types.UpdateSorting]: {
     sorting: Sorting
