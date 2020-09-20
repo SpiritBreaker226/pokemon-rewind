@@ -1,8 +1,7 @@
 import { FieldValue } from './Search'
 
-export interface CardQuery {
+export interface CardQuery extends FieldValue {
   page: string
-  value?: FieldValue
   sort_by?: string
   sort_by_dir?: Direction
 }

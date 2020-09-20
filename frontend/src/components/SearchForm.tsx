@@ -64,7 +64,7 @@ const SearchFrom = () => {
       type: Types.UpdateURL,
       payload: {
         params: {
-          value: state.search.value,
+          ...state.search.value,
           page: 1,
         },
       },

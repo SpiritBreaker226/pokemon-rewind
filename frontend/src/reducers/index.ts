@@ -34,8 +34,8 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
       }
     case Types.UpdateURL:
       const query = {
-        page: action.payload.params.page || currentURL.query.page || '1',
-        ...action.payload.params.value,
+        ...currentURL.query,
+        ...action.payload.params,
       }
       const newUrl = queryString.stringifyUrl(
         {

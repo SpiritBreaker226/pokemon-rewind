@@ -32,7 +32,7 @@ describe('Search Form', () => {
           }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateURL) {
-              const paramValue = action.payload.params.value || { name: '' }
+              const paramValue = action.payload.params || { name: '' }
 
               expect(paramValue.name).toEqual('squirtle')
             }
