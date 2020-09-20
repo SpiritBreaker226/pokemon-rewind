@@ -39,8 +39,44 @@ exports[`App fetch card data renders cards component 1`] = `
           <section
             style="display: none;"
           >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+              for="fieldLabel"
+              id="fieldLabel"
+            >
+              Choose a Search Type
+            </label>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline"
+            >
+              <div
+                aria-haspopup="listbox"
+                aria-labelledby="fieldLabel"
+                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                Name
+              </div>
+              <input
+                data-testid="searchFieldSelect"
+                type="hidden"
+                value="name"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
             <div
               class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
+              style="display: block;"
             >
               <div
                 class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -56,6 +92,47 @@ exports[`App fetch card data renders cards component 1`] = `
                   value=""
                 />
               </div>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline"
+              style="display: none;"
+            >
+              <div
+                aria-haspopup="listbox"
+                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                <span>
+                  ​
+                </span>
+              </div>
+              <input
+                data-testid="searchFieldRarity"
+                type="hidden"
+                value=""
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline"
+              style="display: none;"
+            >
+              <input
+                class="MuiInputBase-input MuiInput-input"
+                data-testid="searchFieldHp"
+                type="number"
+                value=""
+              />
             </div>
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
@@ -274,9 +351,9 @@ exports[`App fetch card data renders cards component 1`] = `
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
-                data-testid="base4128Common5"
+                data-testid="base4128Rare5"
               >
-                Common
+                Rare
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"

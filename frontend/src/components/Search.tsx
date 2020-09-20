@@ -2,6 +2,7 @@ import React, { useContext, ChangeEvent, KeyboardEvent } from 'react'
 
 import {
   Button,
+  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -83,6 +84,8 @@ const Search = () => {
   }
 
   const displaySearchForm = state.search.toggle ? 'block' : 'none'
+  const displaySearchField = (fieldName: string): string =>
+    state.search.field === fieldName ? 'block' : 'none'
 
   return (
     <section>
@@ -119,6 +122,33 @@ const Search = () => {
           className={classes.searchText}
           onKeyPress={handleTextFieldKeyPress}
           onChange={handleChangeSearchBox}
+          style={{ display: displaySearchField('name') }}
+        />
+
+        <Select
+          value={state.search.value.rarity}
+          onChange={handleChangeSearchBox}
+          inputProps={{ 'data-testid': 'searchFieldRarity' }}
+          style={{ display: displaySearchField('rarity') }}
+        >
+          <MenuItem value="">Select a Rarity</MenuItem>
+          <MenuItem value="common">Common</MenuItem>
+          <MenuItem value="uncommon">Uncommon</MenuItem>
+          <MenuItem value="rare">Rare</MenuItem>
+          <MenuItem value="holo rare">Holo Rare</MenuItem>
+          <MenuItem value="reverse holo">Reverse Holo</MenuItem>
+          <MenuItem value="full art holo">Full Art Holo</MenuItem>
+          <MenuItem value="ultra rare">Ultra Rare</MenuItem>
+          <MenuItem value="secret rare">Secret Rare</MenuItem>
+          <MenuItem value="promo">Promo</MenuItem>
+        </Select>
+
+        <Input
+          value={state.search.value.hp}
+          onChange={handleChangeSearchBox}
+          type="number"
+          inputProps={{ 'data-testid': 'searchFieldHp' }}
+          style={{ display: displaySearchField('hp') }}
         />
 
         <Button

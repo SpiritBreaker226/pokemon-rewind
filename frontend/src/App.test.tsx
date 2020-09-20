@@ -4,11 +4,15 @@ import { waitFor, screen, render, fireEvent } from '@testing-library/react'
 
 import axios from 'axios'
 
-import { cards } from './components/helpers/jest_helpers'
+import {
+  cards,
+  selectMaterialUiSelectOption,
+} from './components/helpers/jest_helpers'
 
 import App from './App'
 
 jest.mock('axios')
+
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
 const pagination = {
@@ -54,39 +58,164 @@ describe('App', () => {
         expect(screen.getByTestId('searchBox')).not.toBeVisible()
       })
 
-      it('find card name Squirtle', async () => {
-        fireEvent.change(screen.getByTestId('searchBox'), {
-          target: { value: 'squirtle' },
+      describe('and switching between fields', () => {
+        describe('on default view', () => {
+          it('find card name Squirtle', async () => {
+            fireEvent.change(screen.getByTestId('searchBox'), {
+              target: { value: 'squirtle' },
+            })
+
+            mockedAxios.get.mockResolvedValueOnce({
+              data: { cards: { data: [cards[2]] }, pagination },
+            })
+
+            fireEvent.click(screen.getByText('Search'))
+
+            expect(
+              screen.getByText('Loading', { exact: false })
+            ).toBeInTheDocument()
+
+            await waitFor(() => screen.getByTestId('searchBox'))
+
+            expect(mockedAxios.get).toHaveBeenLastCalledWith(
+              `${process.env.REACT_APP_BASE_API_URL}/cards?name=squirtle&page=1`
+            )
+
+            expect(screen.getByTestId('searchBox')).toHaveDisplayValue(
+              'squirtle'
+            )
+
+            expect(screen.getByTestId('base493Squirtle0')).toHaveTextContent(
+              /squirtle/i
+            )
+            expect(screen.getAllByRole('row').length).toEqual(2)
+
+            fireEvent.change(screen.getByTestId('searchBox'), {
+              target: { value: 'lightning' },
+            })
+
+            expect(screen.getByTestId('searchBox')).toHaveDisplayValue(
+              'lightning'
+            )
+          })
         })
 
-        mockedAxios.get.mockResolvedValueOnce({
-          data: { cards: { data: [cards[2]] }, pagination },
+        describe('change to different fields', () => {
+          describe('so for hit point', () => {
+            it('switch to hp and find cards with 50 or more hp', async () => {
+              await selectMaterialUiSelectOption(
+                screen.getByTestId('searchFieldSelect'),
+                'Hit Point'
+              )
+
+              await waitFor(() => screen.getByTestId('searchFieldHp'))
+
+              expect(screen.getByTestId('searchBox')).not.toBeVisible()
+
+              fireEvent.change(screen.getByTestId('searchFieldHp'), {
+                target: { value: '50' },
+              })
+
+              mockedAxios.get.mockResolvedValueOnce({
+                data: { cards: { data: [cards[1]] }, pagination },
+              })
+
+              fireEvent.click(screen.getByText('Search'))
+
+              expect(
+                screen.getByText('Loading', { exact: false })
+              ).toBeInTheDocument()
+
+              await waitFor(() => screen.getByTestId('searchFieldHp'))
+
+              expect(mockedAxios.get).toHaveBeenLastCalledWith(
+                `${process.env.REACT_APP_BASE_API_URL}/cards?hp=50&page=1`
+              )
+
+              expect(screen.getByTestId('searchFieldHp')).toHaveDisplayValue(
+                '50'
+              )
+
+              expect(
+                screen.getByTestId('base477Jigglypuff0')
+              ).toHaveTextContent(/jigglypuff/i)
+              expect(screen.getAllByRole('row').length).toEqual(2)
+
+              fireEvent.change(screen.getByTestId('searchFieldHp'), {
+                target: { value: '30' },
+              })
+
+              expect(screen.getByTestId('searchFieldHp')).toHaveDisplayValue(
+                '30'
+              )
+            })
+          })
         })
+      })
 
-        fireEvent.click(screen.getByText('Search'))
+      describe('multiple time', () => {
+        it('replace the last search with current search cratira', async () => {
+          fireEvent.change(screen.getByTestId('searchBox'), {
+            target: { value: 'lighting' },
+          })
 
-        expect(
-          screen.getByText('Loading', { exact: false })
-        ).toBeInTheDocument()
+          mockedAxios.get.mockResolvedValue({
+            data: { cards: { data: [cards[0]] }, pagination },
+          })
 
-        await waitFor(() => screen.getByTestId('searchBox'))
+          fireEvent.click(screen.getByText('Search'))
 
-        expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/cards?name=squirtle&page=1`
-        )
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
 
-        expect(screen.getByTestId('searchBox')).toHaveDisplayValue('squirtle')
+          await waitFor(() => screen.getByTestId('searchBox'))
 
-        expect(screen.getByTestId('base493Squirtle0')).toHaveTextContent(
-          /squirtle/i
-        )
-        expect(screen.getAllByRole('row').length).toEqual(2)
+          expect(mockedAxios.get).toHaveBeenLastCalledWith(
+            `${process.env.REACT_APP_BASE_API_URL}/cards?name=lighting&page=1`
+          )
 
-        fireEvent.change(screen.getByTestId('searchBox'), {
-          target: { value: 'lightning' },
+          await selectMaterialUiSelectOption(
+            screen.getByTestId('searchFieldSelect'),
+            'Rarity'
+          )
+          const searchFieldRarity = screen.getByTestId('searchFieldRarity')
+
+          await waitFor(() => searchFieldRarity)
+
+          await selectMaterialUiSelectOption(searchFieldRarity, 'Rare')
+
+          fireEvent.click(screen.getByText('Search'))
+
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
+
+          await waitFor(() => searchFieldRarity)
+
+          expect(mockedAxios.get).toHaveBeenLastCalledWith(
+            `${process.env.REACT_APP_BASE_API_URL}/cards?page=1&rarity=rare`
+          )
+
+          await waitFor(() => searchFieldRarity)
+
+          await selectMaterialUiSelectOption(
+            screen.getByTestId('searchFieldSelect'),
+            'Name'
+          )
+
+          fireEvent.click(screen.getByText('Search'))
+
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
+
+          await waitFor(() => searchFieldRarity)
+
+          expect(mockedAxios.get).toHaveBeenLastCalledWith(
+            `${process.env.REACT_APP_BASE_API_URL}/cards?name=lighting&page=1`
+          )
         })
-
-        expect(screen.getByTestId('searchBox')).toHaveDisplayValue('lightning')
       })
 
       it("reset card's table and URL on blank textbox", async () => {
@@ -97,12 +226,15 @@ describe('App', () => {
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/cards?page=1`
         )
+
         expect(
           screen.getByTestId('base4128Lightning Energy0')
         ).toHaveTextContent(/lightning/i)
+
         expect(screen.getByTestId('base493Squirtle0')).toHaveTextContent(
           /squirtle/i
         )
+
         expect(screen.getAllByRole('row').length).toEqual(4)
       })
     })
