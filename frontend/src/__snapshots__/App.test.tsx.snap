@@ -20,143 +20,27 @@ exports[`App fetch card data renders cards component 1`] = `
       <div
         class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
       >
-        <section>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-            data-testid="searchToggle"
-            tabindex="0"
-            type="button"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+          data-testid="searchToggle"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Search Backup
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <section
-            style="display: none;"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-              for="fieldLabel"
-              id="fieldLabel"
-            >
-              Choose a Search Type
-            </label>
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline"
-            >
-              <div
-                aria-haspopup="listbox"
-                aria-labelledby="fieldLabel"
-                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                role="button"
-                tabindex="0"
-              >
-                Name
-              </div>
-              <input
-                data-testid="searchFieldSelect"
-                type="hidden"
-                value="name"
-              />
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSelect-icon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-            </div>
-            <div
-              class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
-              style="display: block;"
-            >
-              <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-              >
-                <input
-                  aria-invalid="false"
-                  class="MuiInputBase-input MuiInput-input"
-                  data-testid="searchBox"
-                  id="searchBox"
-                  name="searchBox"
-                  placeholder="Search by"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline"
-              style="display: none;"
-            >
-              <div
-                aria-haspopup="listbox"
-                class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                role="button"
-                tabindex="0"
-              >
-                <span>
-                  ​
-                </span>
-              </div>
-              <input
-                data-testid="searchFieldRarity"
-                type="hidden"
-                value=""
-              />
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSelect-icon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline"
-              style="display: none;"
-            >
-              <input
-                class="MuiInputBase-input MuiInput-input"
-                data-testid="searchFieldHp"
-                type="number"
-                value=""
-              />
-            </div>
-            <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-              data-testid="searchButton"
-              tabindex="0"
-              type="button"
-            >
-              <span
-                class="MuiButton-label"
-              >
-                Search
-              </span>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </button>
-          </section>
-        </section>
+            Search Backup
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
       </div>
       <div
         class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
       >
         <section
-          class="makeStyles-control-5"
+          class="makeStyles-control-4"
         >
           <div
             class="MuiGrid-root MuiGrid-container"
@@ -204,6 +88,114 @@ exports[`App fetch card data renders cards component 1`] = `
       </div>
     </div>
   </header>
+  <section
+    class="makeStyles-formContainer-5"
+    style="display: none;"
+  >
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="fieldLabel"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        role="button"
+        tabindex="0"
+      >
+        Name
+      </div>
+      <input
+        data-testid="searchFieldSelect"
+        type="hidden"
+        value="name"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root makeStyles-field-6"
+      style="display: inline;"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiInput-input"
+          data-testid="searchBox"
+          id="searchBox"
+          name="searchBox"
+          placeholder="Search by"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-field-6"
+      style="display: none;"
+    >
+      <div
+        aria-haspopup="listbox"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input makeStyles-rarityField-8"
+        role="button"
+        tabindex="0"
+      >
+        <span>
+          ​
+        </span>
+      </div>
+      <input
+        data-testid="searchFieldRarity"
+        type="hidden"
+        value=""
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-field-6"
+      style="display: none;"
+    >
+      <input
+        class="MuiInputBase-input MuiInput-input makeStyles-hpField-7"
+        data-testid="searchFieldHp"
+        type="number"
+        value=""
+      />
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+      data-testid="searchButton"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Search
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </section>
   <div
     class="makeStyles-appBody-1"
   >
@@ -531,7 +523,7 @@ exports[`App fetch card data renders cards component 1`] = `
       </div>
       <nav
         aria-label="pagination navigation"
-        class="MuiPagination-root makeStyles-pagination-7"
+        class="MuiPagination-root makeStyles-pagination-10"
         data-testid="pagination"
       >
         <ul

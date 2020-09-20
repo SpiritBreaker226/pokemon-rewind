@@ -1,25 +1,35 @@
 import React, { useContext, ChangeEvent, KeyboardEvent } from 'react'
 
-import {
-  Button,
-  Input,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
+import { Button, Input, MenuItem, Select, TextField } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 import { HTMLSelectElement, SearchParamsToServer } from '../types/Search'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    searchText: {
+    formContainer: {
+      backgroundColor: theme.palette.success.main,
+      padding: theme.spacing(2),
+      textAlign: 'center',
+    },
+
+    field: {
       paddingTop: '0.2em',
-      marginRight: '1em',
+      margin: '0 1em',
+    },
+
+    hpField: {
+      width: '8em',
+      paddingTop: '0.8em',
+      display: 'inline',
+    },
+
+    rarityField: {
+      display: 'inline',
+      paddingTop: '0.8em',
     },
   })
 )
@@ -69,13 +79,13 @@ const SearchFrom = () => {
 
   const displaySearchForm = state.search.toggle ? 'block' : 'none'
   const displaySearchField = (fieldName: string): string =>
-    state.search.field === fieldName ? 'block' : 'none'
+    state.search.field === fieldName ? 'inline' : 'none'
 
   return (
-    <section style={{ display: displaySearchForm }}>
-      <InputLabel htmlFor="fieldLabel" id="fieldLabel">
-        Choose a Search Type
-      </InputLabel>
+    <section
+      className={classes.formContainer}
+      style={{ display: displaySearchForm }}
+    >
       <Select
         labelId="fieldLabel"
         value={state.search.field}
@@ -94,7 +104,7 @@ const SearchFrom = () => {
         inputProps={{ 'data-testid': 'searchBox' }}
         value={state.search.value.name}
         placeholder="Search by"
-        className={classes.searchText}
+        className={classes.field}
         onKeyPress={handleTextFieldKeyPress}
         onChange={handleChangeSearchBox}
         style={{ display: displaySearchField('name') }}
@@ -103,7 +113,11 @@ const SearchFrom = () => {
       <Select
         value={state.search.value.rarity}
         onChange={handleChangeSearchBox}
-        inputProps={{ 'data-testid': 'searchFieldRarity' }}
+        inputProps={{
+          'data-testid': 'searchFieldRarity',
+          className: classes.rarityField,
+        }}
+        className={classes.field}
         style={{ display: displaySearchField('rarity') }}
       >
         <MenuItem value="">Select a Rarity</MenuItem>
@@ -122,7 +136,11 @@ const SearchFrom = () => {
         value={state.search.value.hp}
         onChange={handleChangeSearchBox}
         type="number"
-        inputProps={{ 'data-testid': 'searchFieldHp' }}
+        inputProps={{
+          'data-testid': 'searchFieldHp',
+          className: classes.hpField,
+        }}
+        className={classes.field}
         style={{ display: displaySearchField('hp') }}
       />
 
