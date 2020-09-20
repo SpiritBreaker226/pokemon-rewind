@@ -20,6 +20,7 @@ const initialState: InitialState = {
   search: {
     toggle: false,
     value: '',
+    field: 'name',
   },
   method: 'GET',
   sorting: {

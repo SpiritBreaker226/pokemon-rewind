@@ -1,6 +1,12 @@
 import React, { useContext, ChangeEvent, KeyboardEvent } from 'react'
 
-import { Button, TextField } from '@material-ui/core'
+import {
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 
 import { Types } from '../types/Actions'
@@ -20,6 +26,8 @@ export interface cardsSearchProps {
   onSearchClick: () => {}
 }
 
+export type HTMLSelectElement = { name?: string | undefined; value: unknown }
+
 const Search = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
@@ -37,6 +45,7 @@ const Search = () => {
       },
     })
   }
+
   const toggleChecked = () => {
     dispatch({
       type: Types.ToggleSearch,
@@ -50,10 +59,15 @@ const Search = () => {
       handleClickSearch()
     }
   }
+  const handleFieldChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    dispatch({
+      type: Types.UpdateSearchField,
+      payload: { field: e.target.value },
+    })
+  }
 
   const displaySearchForm = state.search.toggle ? 'block' : 'none'
-  // TODO: Add Search Backup button to toggle search aaera as to the requirements
-  // also add in dropdowns fro rarity and a field select that will show text
+
   return (
     <section>
       <Button
@@ -65,6 +79,20 @@ const Search = () => {
       </Button>
 
       <section style={{ display: displaySearchForm }}>
+        <InputLabel htmlFor="fieldLabel" id="fieldLabel">
+          Choose a Search Type
+        </InputLabel>
+        <Select
+          labelId="fieldLabel"
+          value={state.search.field}
+          onChange={handleFieldChange}
+          inputProps={{ 'data-testid': 'searchFieldSelect' }}
+        >
+          <MenuItem value="name">Name</MenuItem>
+          <MenuItem value="rarity">Rarity</MenuItem>
+          <MenuItem value="hp">Hit Point</MenuItem>
+        </Select>
+
         <TextField
           type="text"
           name="searchBox"

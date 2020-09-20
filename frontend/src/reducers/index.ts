@@ -77,6 +77,14 @@ export const searchReducer = (state: InitialState, action: Action) => {
           value: action.payload.value,
         },
       }
+    case Types.UpdateSearchField:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          field: action.payload.field,
+        },
+      }
     case Types.UpdateSorting:
       return {
         ...state,

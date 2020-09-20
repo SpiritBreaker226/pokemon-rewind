@@ -1,7 +1,7 @@
 import { Card } from './Cards'
 import { Pagination } from './Pagination'
 import { Sorting, CardQuery, Method } from './CardQuery'
-import { Search } from './Search'
+import { FieldType, Search } from './Search'
 
 export interface InitialState {
   cards: Card[]
@@ -21,6 +21,7 @@ export enum Types {
   UpdateURL = 'UPDATE_URL',
   ToggleSearch = 'TOGGLE_SEARCH',
   UpdateSearch = 'UPDATE_SEARCH',
+  UpdateSearchField = 'UPDATE_SEARCH_FIELD',
   UpdateSorting = 'UPDATE_SORTING',
   UpdateLoading = 'UPDATE_LOADING',
   UpdateErrorMessageFromServer = 'UPDATE_ERROR_MESSAGE_FROM_SERVER',
@@ -60,6 +61,9 @@ interface SearchPayload {
   }
   [Types.UpdateSearch]: {
     value: string
+  }
+  [Types.UpdateSearchField]: {
+    field: FieldType
   }
   [Types.UpdateSorting]: {
     sorting: Sorting

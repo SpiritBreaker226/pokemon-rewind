@@ -95,6 +95,7 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
         search: {
           toggle: false,
           value: '',
+          field: 'name',
         },
         method: 'GET',
         errorMessage: '',

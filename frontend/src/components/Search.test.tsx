@@ -21,7 +21,11 @@ describe('Search', () => {
       const { getByTestId } = render(
         <MakeWrapper
           state={{
-            search: { toggle: true, value: 'squirtle' },
+            search: {
+              toggle: true,
+              value: 'squirtle',
+              field: 'name',
+            },
           }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateURL) {
@@ -42,7 +46,13 @@ describe('Search', () => {
     it('should not search on non-enter key', () => {
       const { getByTestId } = render(
         <MakeWrapper
-          state={{ search: { toggle: true, value: '' } }}
+          state={{
+            search: {
+              toggle: true,
+              value: '',
+              field: 'name',
+            },
+          }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateSearch) {
               expect(action.payload.value).toEqual('s')
