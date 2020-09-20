@@ -24,9 +24,9 @@ RSpec.describe "Cards", type: :request do
     context 'searching' do
       context 'for name Mewtwo' do
         it 'returns all cards and status code 200' do
-          create_list(:card, 5, name: "Mewtwo")
+          create_list(:card, 5, name: "zackman")
 
-          get "/cards?page=1&name=mewtwo"
+          get "/cards?page=1&name=zackman"
 
           json = JSON.parse(response.body)
 
