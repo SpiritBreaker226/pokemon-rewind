@@ -52,7 +52,7 @@ const SearchFrom = () => {
       value: {},
       page: 1,
     }
-    const fieldName = state.search.field || 'name'
+    const fieldName = state.search.field
 
     params.value[fieldName] = state.search.value[fieldName]
 
