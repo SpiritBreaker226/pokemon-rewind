@@ -103,13 +103,6 @@ describe('App', () => {
         describe('change to different fields', () => {
           describe('so for hit point', () => {
             it('switch to hp and find cards with 50 or more hp', async () => {
-              await selectMaterialUiSelectOption(
-                screen.getByTestId('searchFieldSelect'),
-                'Hit Point'
-              )
-
-              await waitFor(() => screen.getByTestId('searchFieldHp'))
-
               expect(screen.getByTestId('searchBox')).not.toBeVisible()
 
               fireEvent.change(screen.getByTestId('searchFieldHp'), {
@@ -176,32 +169,8 @@ describe('App', () => {
           )
 
           await selectMaterialUiSelectOption(
-            screen.getByTestId('searchFieldSelect'),
-            'Rarity'
-          )
-          const searchFieldRarity = screen.getByTestId('searchFieldRarity')
-
-          await waitFor(() => searchFieldRarity)
-
-          await selectMaterialUiSelectOption(searchFieldRarity, 'Rare')
-
-          fireEvent.click(screen.getByText('Search'))
-
-          expect(
-            screen.getByText('Loading', { exact: false })
-          ).toBeInTheDocument()
-
-          await waitFor(() => searchFieldRarity)
-
-          expect(mockedAxios.get).toHaveBeenLastCalledWith(
-            `${process.env.REACT_APP_BASE_API_URL}/cards?page=1&rarity=rare`
-          )
-
-          await waitFor(() => searchFieldRarity)
-
-          await selectMaterialUiSelectOption(
-            screen.getByTestId('searchFieldSelect'),
-            'Name'
+            screen.getByTestId('searchFieldRarity'),
+            'Rare'
           )
 
           fireEvent.click(screen.getByText('Search'))
@@ -210,10 +179,10 @@ describe('App', () => {
             screen.getByText('Loading', { exact: false })
           ).toBeInTheDocument()
 
-          await waitFor(() => searchFieldRarity)
+          await waitFor(() => screen.getByTestId('searchFieldRarity'))
 
           expect(mockedAxios.get).toHaveBeenLastCalledWith(
-            `${process.env.REACT_APP_BASE_API_URL}/cards?name=lighting&page=1`
+            `${process.env.REACT_APP_BASE_API_URL}/cards?name=lighting&page=1&rarity=rare`
           )
         })
       })

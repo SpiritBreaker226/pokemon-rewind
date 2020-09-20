@@ -50,7 +50,7 @@ Besides, this will reduce the amount of data coming from the server, giving a be
   - Purge Backup will _not_ have a confirm dialogue, if there is time, then maybe this will be added.
   - Display miminuim amount of informaiton of the card, so there will not be a detail view of each card nor displaying of images.
   - Display the minimum amount of information on the card, so there will not be a detailed view of each card nor displaying of images.
-  - The user is allowed to search for one field at a time, which is how the search requirement is worded. The use of 'or' signals that the search a single field search requirement.
+  - The user is allowed to search for any fields they want as it is good user interaction to give the user options to view the data in any combines they want.
   - The search value is saved when switching between each field so that the user can come back to the results later and compare the results.
 
 ## Installation and running this solution

@@ -21,7 +21,6 @@ export enum Types {
   UpdateURL = 'UPDATE_URL',
   ToggleSearch = 'TOGGLE_SEARCH',
   UpdateSearch = 'UPDATE_SEARCH',
-  UpdateSearchField = 'UPDATE_SEARCH_FIELD',
   UpdateSorting = 'UPDATE_SORTING',
   UpdateLoading = 'UPDATE_LOADING',
   UpdateErrorMessageFromServer = 'UPDATE_ERROR_MESSAGE_FROM_SERVER',
@@ -60,10 +59,8 @@ interface SearchPayload {
     toggle: boolean
   }
   [Types.UpdateSearch]: {
-    value: string
-  }
-  [Types.UpdateSearchField]: {
     field: FieldType
+    value: string
   }
   [Types.UpdateSorting]: {
     sorting: Sorting

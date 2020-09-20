@@ -93,36 +93,7 @@ exports[`App fetch card data renders cards component 1`] = `
     style="display: none;"
   >
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline"
-    >
-      <div
-        aria-haspopup="listbox"
-        aria-labelledby="fieldLabel"
-        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-        role="button"
-        tabindex="0"
-      >
-        Name
-      </div>
-      <input
-        data-testid="searchFieldSelect"
-        type="hidden"
-        value="name"
-      />
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSelect-icon"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7 10l5 5 5-5z"
-        />
-      </svg>
-    </div>
-    <div
       class="MuiFormControl-root MuiTextField-root makeStyles-field-6"
-      style="display: inline;"
     >
       <div
         class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -141,7 +112,6 @@ exports[`App fetch card data renders cards component 1`] = `
     </div>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-field-6"
-      style="display: none;"
     >
       <div
         aria-haspopup="listbox"
@@ -171,7 +141,6 @@ exports[`App fetch card data renders cards component 1`] = `
     </div>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-field-6"
-      style="display: none;"
     >
       <input
         class="MuiInputBase-input MuiInput-input makeStyles-hpField-7"

@@ -6,7 +6,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
-import { HTMLSelectElement, SearchParamsToServer } from '../types/Search'
+import { HTMLSelectElement } from '../types/Search'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,30 +38,35 @@ const SearchFrom = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
 
-  if (state.isLoading) return null
-
-  const handleChangeSearchBox = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChangeSearchBox = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: Types.UpdateSearch,
-      payload: { value: e.target.value },
+      payload: { field: 'name', value: e.target.value },
+    })
+  }
+
+  const handleChangeHp = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: Types.UpdateSearch,
+      payload: { field: 'hp', value: e.target.value },
+    })
+  }
+
+  const handleChangeRarity = (e: ChangeEvent<HTMLSelectElement>) => {
+    dispatch({
+      type: Types.UpdateSearch,
+      payload: { field: 'rarity', value: e.target.value },
     })
   }
 
   const handleClickSearch = () => {
-    const params: SearchParamsToServer = {
-      value: {},
-      page: 1,
-    }
-    const fieldName = state.search.field
-
-    params.value[fieldName] = state.search.value[fieldName]
-
     dispatch({
       type: Types.UpdateURL,
       payload: {
-        params,
+        params: {
+          value: state.search.value,
+          page: 1,
+        },
       },
     })
   }
@@ -72,33 +77,13 @@ const SearchFrom = () => {
     }
   }
 
-  const handleFieldChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    dispatch({
-      type: Types.UpdateSearchField,
-      payload: { field: e.target.value },
-    })
-  }
-
   const displaySearchForm = state.search.toggle ? 'block' : 'none'
-  const displaySearchField = (fieldName: string): string =>
-    state.search.field === fieldName ? 'inline' : 'none'
 
   return (
     <section
       className={classes.formContainer}
       style={{ display: displaySearchForm }}
     >
-      <Select
-        labelId="fieldLabel"
-        value={state.search.field}
-        onChange={handleFieldChange}
-        inputProps={{ 'data-testid': 'searchFieldSelect' }}
-      >
-        <MenuItem value="name">Name</MenuItem>
-        <MenuItem value="rarity">Rarity</MenuItem>
-        <MenuItem value="hp">Hit Point</MenuItem>
-      </Select>
-
       <TextField
         type="text"
         name="searchBox"
@@ -109,18 +94,16 @@ const SearchFrom = () => {
         className={classes.field}
         onKeyPress={handleTextFieldKeyPress}
         onChange={handleChangeSearchBox}
-        style={{ display: displaySearchField('name') }}
       />
 
       <Select
         value={state.search.value.rarity}
-        onChange={handleChangeSearchBox}
+        onChange={handleChangeRarity}
         inputProps={{
           'data-testid': 'searchFieldRarity',
           className: classes.rarityField,
         }}
         className={classes.field}
-        style={{ display: displaySearchField('rarity') }}
       >
         <MenuItem value="">Select a Rarity</MenuItem>
         <MenuItem value="common">Common</MenuItem>
@@ -136,14 +119,13 @@ const SearchFrom = () => {
 
       <Input
         value={state.search.value.hp}
-        onChange={handleChangeSearchBox}
+        onChange={handleChangeHp}
         type="number"
         inputProps={{
           'data-testid': 'searchFieldHp',
           className: classes.hpField,
         }}
         className={classes.field}
-        style={{ display: displaySearchField('hp') }}
       />
 
       <Button
