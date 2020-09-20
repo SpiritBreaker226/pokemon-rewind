@@ -47,16 +47,19 @@ RSpec.describe "Cards", type: :request do
         end
       end
 
-      context 'for hp' do
+      context 'on mutiple columns' do
         it 'find all cards with hp 200 or greater' do
-          create(:card, hp: 200)
-          create(:card, hp: 300)
+          create(:card, hp: 200, name: "Zackman")
+          create(:card, hp: 300, name: "Zackman 2")
 
-          get "/cards?page=1&hp=200"
+          get "/cards?page=1&hp=200&name=zackman"
 
           json = JSON.parse(response.body)
 
           expect(json['cards']['data'].count).to eq(2)
+          expect(
+            json['cards']['data'][0]['attributes']['name']
+          ).to eq('Zackman')
           expect(response).to have_http_status(200)
         end
       end

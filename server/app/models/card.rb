@@ -125,21 +125,20 @@ class Card < ApplicationRecord
     Card.all
   end
 
-def self.search(field_name: nil, value: nil, page: nil)
-    cards = case field_name
-      when 'name'
-        Card.where("LOWER(name) LIKE ?", "%#{value.downcase}%")
-      when 'rarity'
-        Card.where("LOWER(rarity) = ?", value.downcase)
-      when 'hp'
-        Card.where("hp >= ?", value)
+  def self.search(name: '', rarity: '', hp: 0, page: nil)
+    cards =
+      if name == '' && rarity == '' && hp == 0
+        Card.all
       else
-        if value.nil?
-          Card.all
-        else
-          return nil
-        end
-    end
+        name_condition = name.blank? ? '' : 'LOWER(name) LIKE ?'
+        rarity_condition = rarity.blank? ? '' : 'LOWER(rarity) = ?'
+        hp_condition =  hp === 0 ? '' : 'IFNULL(hp, 0) >= ?'
+
+        Card
+          .where(name_condition, "%#{name.downcase}%")
+          .where(rarity_condition, rarity.downcase)
+          .where(hp_condition, hp)
+      end
 
     page.nil? ? cards.order(name: :asc) : cards.order(name: :asc).page(page)
   end

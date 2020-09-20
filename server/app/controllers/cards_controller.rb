@@ -5,16 +5,13 @@ class CardsController < ApplicationController
       return
     end
 
-    field_name = params.keys.select {
-      |key| key != 'controller' && key != 'action'&& key != 'page'
-    }
-
-    field_name = field_name.first unless field_name.nil?
+    hp = params["hp"].present? ? params["hp"].to_i : 0
 
     current_page = params["page"]
     cards = Card.search(
-      field_name: field_name,
-      value: params[field_name],
+      name: params["name"] || '',
+      rarity: params["rarity"] || '',
+      hp: hp,
       page: current_page
     )
 

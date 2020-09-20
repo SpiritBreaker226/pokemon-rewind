@@ -10,16 +10,6 @@ RSpec.describe Card, type: :model do
       expect(all_found.count).to eq(10)
     end
 
-    context 'and no field is found' do
-      it 'should return nil' do
-        found = Card.search(
-          field_name: 'not_a_field', value: Faker::Games::Pokemon.name
-        )
-
-        expect(found).to be_nil
-      end
-    end
-
     context 'when searching' do
       before(:each) do
         create_list(:card, 10)
@@ -29,38 +19,38 @@ RSpec.describe Card, type: :model do
         it 'find all cards name Zoe' do
           create_list(:card, 2, name: "Zoe #{Faker::Name.last_name}")
 
-          found_all = Card.search(field_name: 'name', value: 'zoe')
+          found_all = Card.search(name: 'zoe')
 
           expect(found_all.count).to eq(2)
         end
 
         context 'and when no cards are found' do
           it 'should be an empty array' do
-            found_all = Card.search(field_name: 'name', value: 'bob')
+            found_all = Card.search(name: 'bob')
 
             expect(found_all.count).to eq(0)
           end
         end
       end
 
-      context 'for hp' do
-        it 'find all cards with hp 200 or greater' do
-          create(:card, hp: 200)
-          create(:card, hp: 300)
+      context 'on mutiple columns' do
+        it 'find all Ultra Rare with name Zoe' do
+          create_list(:card, 2, rarity: 'Ultra Rare', name: 'Zoe')
 
-          found_all = Card.search(field_name: 'hp', value: 200)
+          found_all = Card.search(rarity: 'Ultra Rare', name: 'Zoe')
 
           expect(found_all.count).to eq(2)
+          expect(found_all[0].name).to eq('Zoe')
         end
-      end
 
-      context 'for rarity' do
-        it 'find all cards name Zoe' do
-          create_list(:card, 2, rarity: 'Ultra Rare')
+        context 'with hp since hp uses integer' do
+          it 'find Ultra Rare with hp 300' do
+            create(:card, hp: 300, rarity: 'Ultra Rare')
 
-          found_all = Card.search(field_name: 'rarity', value: 'Ultra Rare')
+            found_all = Card.search(rarity: 'Ultra Rare', hp: 200)
 
-          expect(found_all.count).to eq(2)
+            expect(found_all.count).to eq(1)
+          end
         end
       end
     end
