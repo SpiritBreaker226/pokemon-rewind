@@ -9,6 +9,8 @@ import Search from './components/Search'
 import Control from './components/Control'
 import ErrorBoundary from './components/ErrorBoundary'
 
+import SearchFrom from './components/SearchForm'
+
 import { AppProvider } from './contexts/AppContext'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,6 +52,8 @@ function App() {
               </Grid>
             </Grid>
           </header>
+
+          <SearchFrom />
 
           <div className={classes.appBody}>
             <CardTable />

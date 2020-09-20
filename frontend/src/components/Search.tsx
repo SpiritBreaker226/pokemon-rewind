@@ -6,8 +6,6 @@ import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 
-import SearchFrom from './SearchForm'
-
 const Search = () => {
   const { state, dispatch } = useContext(AppContext)
 
@@ -21,17 +19,13 @@ const Search = () => {
   }
 
   return (
-    <section>
-      <Button
-        variant="outlined"
-        onClick={toggleChecked}
-        data-testid="searchToggle"
-      >
-        Search Backup
-      </Button>
-
-      <SearchFrom />
-    </section>
+    <Button
+      variant="outlined"
+      onClick={toggleChecked}
+      data-testid="searchToggle"
+    >
+      Search Backup
+    </Button>
   )
 }
 
