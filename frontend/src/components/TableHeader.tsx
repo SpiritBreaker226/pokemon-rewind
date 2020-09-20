@@ -1,16 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import {
-  TableHead,
-  TableRow,
-  TableCell,
-  TableSortLabel,
-} from '@material-ui/core'
-
-import { AppContext } from '../contexts/AppContext'
-
-import { Types } from '../types/Actions'
-import { Direction } from '../types/CardQuery'
+import { TableHead, TableRow, TableCell } from '@material-ui/core'
 
 const headers = [
   { name: 'Name', sortByField: '' },
@@ -29,57 +19,12 @@ const headers = [
 ]
 
 const TableHeader = () => {
-  const { state, dispatch } = useContext(AppContext)
-  const handleOnClick = (sortByField: string) => {
-    let dir: Direction =
-      state.sorting.dir && state.sorting.dir === 'asc' ? 'desc' : 'asc'
-
-    // reset direction on field change
-    if (sortByField !== state.sorting.fieldName) dir = 'asc'
-
-    dispatch({
-      type: Types.UpdateURL,
-      payload: {
-        params: {
-          sort_by: sortByField,
-          sort_by_dir: dir,
-          page: state.pagination.current_page.toString(),
-        },
-      },
-    })
-
-    dispatch({
-      type: Types.UpdateSorting,
-      payload: {
-        sorting: {
-          fieldName: sortByField,
-          dir,
-        },
-      },
-    })
-  }
-
   return (
     <TableHead>
       <TableRow>
-        {headers.map(({ name, sortByField }) => (
+        {headers.map(({ name }) => (
           <TableCell component="th" key={name}>
-            {sortByField ? (
-              <TableSortLabel
-                data-testid={sortByField}
-                active={sortByField === state.sorting.fieldName}
-                direction={
-                  sortByField === state.sorting.fieldName
-                    ? state.sorting.dir
-                    : 'asc'
-                }
-                onClick={() => handleOnClick(sortByField)}
-              >
-                {name}
-              </TableSortLabel>
-            ) : (
-              name
-            )}
+            {name}
           </TableCell>
         ))}
       </TableRow>
