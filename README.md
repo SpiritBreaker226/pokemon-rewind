@@ -33,6 +33,7 @@ Rewind is looking for intelligent, resourceful, full-stack developers to join th
 - `access_pokemon_api` is assumed to work fine or that the Pokemon TCG SDK will take care of network errors. As there is no time to make sure that when the Pokemon API fails that it would do gracefully, and let the user and developer know.
 - Add happy paths testing to the controller test and some of the model tests to help speed the development along on the server.
 - Card purging has a bug where Cards and Attack will not delete each other, will need to investigate if time permits. However, there is a workaround for deleting the tables individually.
+- Card order is by card name, since that is easier to search throw the list of cards.
 
 ### Database Schema
 
