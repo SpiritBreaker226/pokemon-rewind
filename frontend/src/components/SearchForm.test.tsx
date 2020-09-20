@@ -2,15 +2,15 @@ import React from 'react'
 
 import { screen, render, fireEvent } from '@testing-library/react'
 
-import Search from './Search'
+import SearchForm from './SearchForm'
 import { MakeWrapper } from './helpers/jest_helpers'
 import { Action, Types } from '../types/Actions'
 
 jest.mock('axios')
 
-describe('Search', () => {
+describe('Search Form', () => {
   it('renders cards search', async () => {
-    const { getByTestId } = render(<Search />)
+    const { getByTestId } = render(<SearchForm />)
 
     expect(getByTestId('searchButton')).not.toBeVisible()
     expect(getByTestId('searchBox')).not.toBeVisible()
@@ -38,7 +38,7 @@ describe('Search', () => {
             }
           }}
         >
-          <Search />
+          <SearchForm />
         </MakeWrapper>
       )
 
@@ -67,7 +67,7 @@ describe('Search', () => {
             }
           }}
         >
-          <Search />
+          <SearchForm />
         </MakeWrapper>
       )
 
