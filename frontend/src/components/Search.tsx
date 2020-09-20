@@ -13,7 +13,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
-import { FieldValue } from '../types/Search'
+import { HTMLSelectElement, SearchParamsToServer } from '../types/Search'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -23,17 +23,6 @@ const useStyles = makeStyles(() =>
     },
   })
 )
-
-export interface cardsSearchProps {
-  onSearchClick: () => {}
-}
-
-export type HTMLSelectElement = { name?: string | undefined; value: unknown }
-
-export interface SearchParamsToServer {
-  value: FieldValue
-  page: number
-}
 
 const Search = () => {
   const classes = useStyles()
