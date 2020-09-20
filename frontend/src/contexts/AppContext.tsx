@@ -19,7 +19,11 @@ const initialState: InitialState = {
   urlToEndpoint: `${process.env.REACT_APP_BASE_API_URL}/cards?page=1`,
   search: {
     toggle: false,
-    value: '',
+    value: {
+      name: '',
+      hp: '',
+      rarity: '',
+    },
     field: 'name',
   },
   method: 'GET',

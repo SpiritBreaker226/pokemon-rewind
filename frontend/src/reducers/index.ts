@@ -33,7 +33,7 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
         method: action.payload.method,
       }
     case Types.UpdateURL:
-      const query = { ...currentURL.query, ...action.payload.params }
+      const query = { ...currentURL.query, ...action.payload.params.value }
       const newUrl = queryString.stringifyUrl(
         {
           url: currentURL.url,
@@ -70,11 +70,15 @@ export const searchReducer = (state: InitialState, action: Action) => {
         },
       }
     case Types.UpdateSearch:
+      const newSearchValue = { ...state.search.value }
+
+      newSearchValue[state.search.field] = action.payload.value
+
       return {
         ...state,
         search: {
           ...state.search,
-          value: action.payload.value,
+          value: newSearchValue,
         },
       }
     case Types.UpdateSearchField:

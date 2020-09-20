@@ -23,13 +23,18 @@ describe('Search', () => {
           state={{
             search: {
               toggle: true,
-              value: 'squirtle',
+              value: {
+                name: 'squirtle',
+                rarity: '',
+              },
               field: 'name',
             },
           }}
           dispatch={(action: Action) => {
             if (action.type === Types.UpdateURL) {
-              expect(action.payload.params.name).toEqual('squirtle')
+              const paramValue = action.payload.params.value || { name: '' }
+
+              expect(paramValue.name).toEqual('squirtle')
             }
           }}
         >
@@ -49,7 +54,10 @@ describe('Search', () => {
           state={{
             search: {
               toggle: true,
-              value: '',
+              value: {
+                name: '',
+                rarity: '',
+              },
               field: 'name',
             },
           }}

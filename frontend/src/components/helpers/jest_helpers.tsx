@@ -94,7 +94,11 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
         urlToEndpoint: '',
         search: {
           toggle: false,
-          value: '',
+          value: {
+            name: '',
+            hp: '',
+            rarity: '',
+          },
           field: 'name',
         },
         method: 'GET',

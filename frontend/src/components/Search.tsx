@@ -12,6 +12,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
+import { FieldValue } from '../types/Search'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -28,20 +29,35 @@ export interface cardsSearchProps {
 
 export type HTMLSelectElement = { name?: string | undefined; value: unknown }
 
+export interface SearchParamsToServer {
+  value: FieldValue
+  page: number
+}
+
 const Search = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
-  const handleChangeSearchBox = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSearchBox = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     dispatch({
       type: Types.UpdateSearch,
       payload: { value: e.target.value },
     })
   }
   const handleClickSearch = () => {
+    const params: SearchParamsToServer = {
+      value: {},
+      page: 1,
+    }
+    const fieldName = state.search.field || 'name'
+
+    params.value[fieldName] = state.search.value[fieldName]
+
     dispatch({
       type: Types.UpdateURL,
       payload: {
-        params: { name: state.search.value, page: '1' },
+        params,
       },
     })
   }
@@ -98,7 +114,7 @@ const Search = () => {
           name="searchBox"
           id="searchBox"
           inputProps={{ 'data-testid': 'searchBox' }}
-          value={state.search.value}
+          value={state.search.value.name}
           placeholder="Search by"
           className={classes.searchText}
           onKeyPress={handleTextFieldKeyPress}

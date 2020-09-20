@@ -1,6 +1,8 @@
+import { FieldValue } from './Search'
+
 export interface CardQuery {
   page: string
-  name?: string
+  value?: FieldValue
   sort_by?: string
   sort_by_dir?: Direction
 }
