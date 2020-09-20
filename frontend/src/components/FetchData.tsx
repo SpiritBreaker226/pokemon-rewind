@@ -50,6 +50,8 @@ const FetchData: FunctionComponent = () => {
             ? await axios.post(state.urlToEndpoint)
             : await axios.get(state.urlToEndpoint)
 
+        if (!res) throw new Error('Unable to Retrive Data')
+
         dispatch({
           type: Types.UpdateCards,
           payload: {
