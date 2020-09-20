@@ -9,6 +9,8 @@ import { AppContext } from '../contexts/AppContext'
 const Search = () => {
   const { state, dispatch } = useContext(AppContext)
 
+  if (state.isLoading) return null
+
   const toggleChecked = () => {
     dispatch({
       type: Types.ToggleSearch,

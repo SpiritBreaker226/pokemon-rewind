@@ -38,6 +38,8 @@ const SearchFrom = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
 
+  if (state.isLoading) return null
+
   const handleChangeSearchBox = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
