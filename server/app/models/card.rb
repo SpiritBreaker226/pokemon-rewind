@@ -46,7 +46,11 @@ class Card < ApplicationRecord
   end
 
   def self.access_pokemon_api(set_code: nil)
-    Pokemon::Card.where(set_code: set_code)
+    response = HTTParty.get(
+      "https://api.pokemontcg.io/v1/cards?setCode=#{set_code}"
+    )
+
+    JSON.parse(response.body)
   end
 
   def self.back_up_from_pokemon_api(set_code: 'base4')

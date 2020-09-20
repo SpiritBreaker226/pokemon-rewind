@@ -18,8 +18,7 @@ gem 'rack-cors'
 
 gem 'jsonapi-serializer'
 
-# to access pokemon api
-gem 'pokemon_tcg_sdk'
+gem 'httparty'
 
 # for paginiate
 gem 'kaminari'
