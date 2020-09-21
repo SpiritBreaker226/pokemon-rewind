@@ -1,6 +1,6 @@
 class Attack < ApplicationRecord
   has_and_belongs_to_many :cards
-  has_many :costs, class_name: "AttacksType", dependent: :delete_all
+  has_many :costs, class_name: "AttacksType"
 
   validates :name, presence: true, uniqueness: true
 
