@@ -92,6 +92,8 @@ RSpec.describe Attack, type: :model do
         expect(Attack.all.count).to eq(2)
         expect(card.attacks.count).to eq(2)
         expect(card.attacks.first.name).to eq('Stun Spore')
+        expect(card.attacks.last.costs.first.value).to eq(1)
+        expect(card.attacks.last.costs.second.value).to eq(1)
       end
     end
   end
