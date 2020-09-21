@@ -109,7 +109,7 @@ RSpec.describe "Cards", type: :request do
       expect(Card.all.count).to eq(0)
       expect(Text.all.count).to eq(0)
       expect(Attack.all.count).to eq(0)
-      expect(AttacksTypes.all.count).to eq(0)
+      expect(AttacksType.all.count).to eq(0)
       expect(CardGroup.all.count).to eq(0)
       expect(Type.all.count).to eq(10)
     end

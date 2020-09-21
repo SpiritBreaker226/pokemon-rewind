@@ -1,4 +1,4 @@
-class AttacksTypes < ApplicationRecord
+class AttacksType < ApplicationRecord
   belongs_to :attack
   belongs_to :type
 
