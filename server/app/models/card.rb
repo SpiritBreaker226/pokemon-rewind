@@ -55,6 +55,7 @@ class Card < ApplicationRecord
 
   def self.back_up_from_pokemon_api(set_code: 'base4')
     cards = Card.access_pokemon_api(set_code: set_code)
+    types = Type.to_h
     hp = nil
     ability = nil
     created_card = nil
@@ -98,7 +99,7 @@ class Card < ApplicationRecord
       )
 
       unless card['types'].nil?
-        Type.add_to_card(created_card, card['types'])
+        Type.add_to_card(created_card, types, card['types'])
       end
 
       unless card['text'].nil?
@@ -106,19 +107,32 @@ class Card < ApplicationRecord
       end
 
       unless card['attacks'].nil?
-        Attack.add_to_card(created_card, card['attacks'])
+        Attack.add_to_card(created_card, types, card['attacks'])
       end
 
       unless card['retreatCost'].nil?
-        CardGroup.add_retreat_costs_to_card(created_card, card['retreatCost'])
+        CardGroup.add_retreat_costs_to_card(
+          created_card,
+          types,
+          card['retreatCost']
+        )
       end
 
       unless card['resistances'].nil?
-        CardGroup.add_to_card(created_card, 'resistances', card['resistances'])
+        CardGroup.add_to_card(
+          created_card,
+          types,
+          'resistances',
+          card['resistances']
+        )
       end
 
       unless card['weaknesses'].nil?
-        CardGroup.add_to_card(created_card, 'weaknesses', card['weaknesses'])
+        CardGroup.add_to_card(
+          created_card,
+          types,
+          'weaknesses',
+          card['weaknesses'])
       end
     end
 

@@ -4,7 +4,7 @@ class Attack < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  def self.add_to_card(card, attacks)
+  def self.add_to_card(card, types, attacks)
     attacks.each do |attack|
       attack_details = Attack.find_by_name(attack['name'])
 
@@ -13,7 +13,7 @@ class Attack < ApplicationRecord
           name: attack['name'],
           text: attack['text'],
           damage: attack['damage'],
-          converted_energy_cost: attack['convertedEnergyCost'],
+          converted_energy_cost: attack['convertedEnergyCost']
         )
       else
         card.attacks << attack_details

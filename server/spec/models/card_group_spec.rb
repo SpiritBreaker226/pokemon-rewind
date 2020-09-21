@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CardGroup, type: :model do
   let (:card) { create(:card) }
+  let (:hash_types) { Type.to_h }
 
   describe '#add_to_card' do
     context 'when there is a valid card group type' do
@@ -14,7 +15,7 @@ RSpec.describe CardGroup, type: :model do
           }
         ]
 
-        CardGroup.add_to_card(card, 'weaknesses', type_content)
+        CardGroup.add_to_card(card, hash_types, 'weaknesses', type_content)
 
         expect(card.weaknesses.count).to eq(1)
         expect(card.weaknesses.first.type.name).to eq(type.name)
@@ -32,7 +33,12 @@ RSpec.describe CardGroup, type: :model do
           }
         ]
 
-        CardGroup.add_to_card(card, 'not_a_group_type', type_content)
+        CardGroup.add_to_card(
+          card,
+          hash_types,
+          'not_a_group_type',
+          type_content
+        )
 
         expect(card.weaknesses.count).to eq(0)
       end
@@ -47,7 +53,7 @@ RSpec.describe CardGroup, type: :model do
           }
         ]
 
-        CardGroup.add_to_card(card, 'resistances', group_types)
+        CardGroup.add_to_card(card, hash_types, 'resistances', group_types)
 
         expect(card.resistances.count).to eq(0)
       end
@@ -58,7 +64,7 @@ RSpec.describe CardGroup, type: :model do
         it 'not add any Retreat Costs' do
           types = ['Colorless']
 
-          CardGroup.add_to_card(card, 'retreat_costs', types)
+          CardGroup.add_to_card(card, hash_types, 'retreat_costs', types)
 
           expect(card.retreat_costs.count).to eq(0)
         end
@@ -71,7 +77,7 @@ RSpec.describe CardGroup, type: :model do
       type = create(:type, name: 'Colorless')
       types = ['Colorless', 'Colorless']
 
-      CardGroup.add_retreat_costs_to_card(card, types)
+      CardGroup.add_retreat_costs_to_card(card, hash_types, types)
 
       expect(card.retreat_costs.count).to eq(1)
       expect(card.retreat_costs.first.type.name).to eq(type.name)
@@ -80,7 +86,7 @@ RSpec.describe CardGroup, type: :model do
 
     context 'card type does not exisit' do
       it 'not add card type to cards as Retreat Costs' do
-        CardGroup.add_retreat_costs_to_card(card, ['not a type'])
+        CardGroup.add_retreat_costs_to_card(card, hash_types, ['not a type'])
 
         expect(card.retreat_costs.count).to eq(0)
       end

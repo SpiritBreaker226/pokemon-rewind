@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe Attack, type: :model do
   describe '#add_to_card' do
     let (:card) { create(:card) }
+    let (:hash_types) { Type.to_h }
 
     context 'when there are no attacks' do
       context 'create and' do
         it 'should add attack to card' do
-          create(:type, name: 'Grass')
+          type = create(:type, name: 'Grass')
 
           attacks = [
             {
@@ -19,19 +20,49 @@ RSpec.describe Attack, type: :model do
             }
           ]
 
-          Attack.add_to_card(card, attacks)
+          Attack.add_to_card(
+            card,
+            hash_types,
+            attacks
+          )
 
           expect(Attack.all.count).to eq(1)
           expect(card.attacks.count).to eq(1)
           expect(card.attacks.first.name).to eq('Stun Spore')
+        end
+
+        context 'when there are two of the same cost types' do
+          it 'should add two to Attacks Types table' do
+            type = create(:type, name: 'Colorless')
+
+            existing_attack = create(:attack, name: 'Stun Spore')
+
+            attacks = [
+              {
+                'cost' => ['Colorless', 'Colorless'],
+                'name' => 'Leech Life',
+                'text' => 'Remove a number of damage counters from Venonat equal',
+                'damage' => '10',
+                'convertedEnergyCost' => 2
+              }
+            ]
+
+            Attack.add_to_card(
+              card,
+              hash_types,
+              attacks
+            )
+
+            expect(card.attacks.first.costs.first.value).to eq(2)
+          end
         end
       end
     end
 
     context 'when there is an existing attacks' do
       it 'should add exist attack to card' do
-        create(:type, name: 'Grass')
-        create(:type, name: 'Colorless')
+        grass_type = create(:type, name: 'Grass')
+        colorless_type = create(:type, name: 'Colorless')
 
         existing_attack = create(:attack, name: 'Stun Spore')
 
@@ -52,7 +83,11 @@ RSpec.describe Attack, type: :model do
           }
         ]
 
-        Attack.add_to_card(card, attacks)
+        Attack.add_to_card(
+          card,
+          hash_types,
+          attacks
+        )
 
         expect(Attack.all.count).to eq(2)
         expect(card.attacks.count).to eq(2)
