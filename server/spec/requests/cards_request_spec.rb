@@ -85,6 +85,9 @@ RSpec.describe "Cards", type: :request do
       it 'returns status code 201' do
         create(:type, name: 'Psychic')
         create(:type, name: 'Fighting')
+        create(:type, name: 'Water')
+        create(:type, name: 'Colorless')
+        create(:type, name: 'Grass')
 
         allow(Card).to(
           receive(:access_pokemon_api).and_return(pokemon_api_response)

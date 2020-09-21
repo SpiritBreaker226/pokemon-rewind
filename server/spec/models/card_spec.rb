@@ -83,6 +83,9 @@ RSpec.describe Card, type: :model do
       before :each do
         create(:type, name: 'Psychic')
         create(:type, name: 'Fighting')
+        create(:type, name: 'Water')
+        create(:type, name: 'Colorless')
+        create(:type, name: 'Grass')
 
         allow(Card).to(
           receive(:access_pokemon_api).and_return(pokemon_api_response)
