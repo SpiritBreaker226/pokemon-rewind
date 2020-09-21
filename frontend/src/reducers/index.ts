@@ -23,13 +23,13 @@ export const callingServerReducer = (state: InitialState, action: Action) => {
     case Types.BackUpFromAPI:
       return {
         ...state,
-        urlToEndpoint: currentURL.url,
+        urlToEndpoint: `${process.env.REACT_APP_BASE_API_URL}/cards`,
         method: action.payload.method,
       }
     case Types.PurgeBackUp:
       return {
         ...state,
-        urlToEndpoint: `${currentURL.url}/all`,
+        urlToEndpoint: `${process.env.REACT_APP_BASE_API_URL}/cards/all`,
         method: action.payload.method,
       }
     case Types.UpdateURL:
