@@ -26,18 +26,6 @@ FactoryBot.define do
       ability_type { ["Pokémon Power", 'Bad Dreams', 'Forecast'].sample }
     end
 
-    factory :card_with_texts do
-      transient do
-        text_count { 2 }
-      end
-
-      after(:create) do |card, evaluator|
-        create_list(:text, evaluator.text_count, card: card)
-
-        card.reload
-      end
-    end
-
     factory :card_with_all_attributes do
       after(:create) do |card, evaluator|
         create_list(:text, 1, card_id: card)
