@@ -47,6 +47,7 @@ class CardsController < ApplicationController
   def destroy
     CardGroup.delete_all
     Text.delete_all
+    AttacksType.destroy_all
     Attack.destroy_all
     Card.destroy_all
 
