@@ -17,7 +17,6 @@ FactoryBot.define do
     number { Faker::Number.within(range: 1..60).to_s }
     rarity { ["Rare", "Rare Holo", "Common"].sample }
     series { set_series }
-    set { ["BREAKthrough", "Phantom Forces", "Jungle"].sample }
     set_code { "#{series.downcase}#{Faker::Number.within(range: 1..10)}" }
 
     trait :with_an_ability do

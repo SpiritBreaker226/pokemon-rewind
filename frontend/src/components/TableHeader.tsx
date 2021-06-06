@@ -14,7 +14,6 @@ const headers = [
   { name: 'Number', sortByField: '' },
   { name: 'Rarity', sortByField: '' },
   { name: 'Series', sortByField: '' },
-  { name: 'Set', sortByField: '' },
   { name: 'Set Code', sortByField: '' },
 ]
 

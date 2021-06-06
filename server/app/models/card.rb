@@ -31,7 +31,6 @@ class Card < ApplicationRecord
     :number,
     :rarity,
     :series,
-    :set,
     :set_code,
     presence: true
   )
@@ -55,6 +54,7 @@ class Card < ApplicationRecord
 
   def self.back_up_from_pokemon_api(set_code: 'base4')
     cards = Card.access_pokemon_api(set_code: set_code)
+
     types = Type.to_h
     hp = nil
     ability = nil
@@ -87,7 +87,6 @@ class Card < ApplicationRecord
         number: card['number'],
         rarity: card['rarity'],
         series: card['series'],
-        set: card['set'],
         set_code: card['setCode'],
         national_pokedex_number: card['nationalPokedexNumber'],
         hp: hp,

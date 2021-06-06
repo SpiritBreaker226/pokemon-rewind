@@ -13,7 +13,6 @@ class CardSerializer
     :number,
     :rarity,
     :series,
-    :set,
     :set_code
   )
 
